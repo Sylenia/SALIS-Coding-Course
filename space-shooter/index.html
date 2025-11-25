@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 Cosmic Assault - Space Shooter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main Menu Screen -->
+    <div id="main-menu" class="screen active">
+        <div class="menu-content">
+            <h1 class="game-title">COSMIC ASSAULT</h1>
+            <p class="subtitle">Defend the Galaxy</p>
+            <button id="start-btn" class="menu-btn">START MISSION</button>
+            <button id="instructions-btn" class="menu-btn secondary">INSTRUCTIONS</button>
+            <div class="credits">Made with Three.js</div>
+        </div>
+        <div class="stars-bg"></div>
+    </div>
+
+    <!-- Instructions Screen -->
+    <div id="instructions-screen" class="screen">
+        <div class="instructions-content">
+            <h2>HOW TO PLAY</h2>
+            <div class="controls-grid">
+                <div class="control-item">
+                    <span class="key">MOUSE</span>
+                    <span class="desc">Aim & Steer Ship</span>
+                </div>
+                <div class="control-item">
+                    <span class="key">LEFT CLICK</span>
+                    <span class="desc">Fire Weapons</span>
+                </div>
+                <div class="control-item">
+                    <span class="key">W / S</span>
+                    <span class="desc">Throttle Up / Down</span>
+                </div>
+                <div class="control-item">
+                    <span class="key">A / D</span>
+                    <span class="desc">Strafe Left / Right</span>
+                </div>
+                <div class="control-item">
+                    <span class="key">SPACE</span>
+                    <span class="desc">Special Weapon</span>
+                </div>
+                <div class="control-item">
+                    <span class="key">P</span>
+                    <span class="desc">Pause Game</span>
+                </div>
+            </div>
+            <p class="tip">💡 Destroy all enemies in each wave to advance!</p>
+            <button id="back-btn" class="menu-btn">BACK</button>
+        </div>
+    </div>
+
+    <!-- HUD Overlay -->
+    <div id="hud" class="hidden">
+        <div class="hud-top">
+            <div class="hud-left">
+                <div class="health-bar">
+                    <span class="label">SHIELD</span>
+                    <div class="bar-container">
+                        <div id="health-fill" class="bar-fill"></div>
+                    </div>
+                    <span id="health-text">100%</span>
+                </div>
+                <div class="energy-bar">
+                    <span class="label">ENERGY</span>
+                    <div class="bar-container">
+                        <div id="energy-fill" class="bar-fill energy"></div>
+                    </div>
+                    <span id="energy-text">100%</span>
+                </div>
+            </div>
+            <div class="hud-center">
+                <div id="wave-indicator">WAVE <span id="wave-num">1</span></div>
+            </div>
+            <div class="hud-right">
+                <div class="score-display">
+                    <span class="label">SCORE</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="enemies-display">
+                    <span class="label">ENEMIES</span>
+                    <span id="enemies-left">0</span>
+                </div>
+            </div>
+        </div>
+        <div id="crosshair">
+            <div class="crosshair-inner"></div>
+        </div>
+        <div id="special-indicator">
+            <span>SPECIAL READY</span>
+        </div>
+    </div>
+
+    <!-- Wave Complete Screen -->
+    <div id="wave-complete" class="screen">
+        <div class="wave-content">
+            <h2>WAVE COMPLETE!</h2>
+            <div class="wave-stats">
+                <div class="stat">
+                    <span class="stat-label">Enemies Destroyed</span>
+                    <span id="stat-enemies" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Wave Score</span>
+                    <span id="stat-score" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Accuracy</span>
+                    <span id="stat-accuracy" class="stat-value">0%</span>
+                </div>
+            </div>
+            <button id="next-wave-btn" class="menu-btn">NEXT WAVE</button>
+        </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="game-over" class="screen">
+        <div class="gameover-content">
+            <h2>MISSION FAILED</h2>
+            <p class="final-score">Final Score: <span id="final-score">0</span></p>
+            <p class="waves-survived">Waves Survived: <span id="waves-survived">0</span></p>
+            <button id="restart-btn" class="menu-btn">TRY AGAIN</button>
+            <button id="menu-btn" class="menu-btn secondary">MAIN MENU</button>
+        </div>
+    </div>
+
+    <!-- Pause Screen -->
+    <div id="pause-screen" class="screen">
+        <div class="pause-content">
+            <h2>PAUSED</h2>
+            <button id="resume-btn" class="menu-btn">RESUME</button>
+            <button id="quit-btn" class="menu-btn secondary">QUIT TO MENU</button>
+        </div>
+    </div>
+
+    <!-- Game Canvas Container -->
+    <div id="game-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
