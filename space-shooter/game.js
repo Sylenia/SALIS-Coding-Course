@@ -64,6 +64,7 @@ let specialReady = true;
 let mouse = { x: 0, y: 0 };
 let keys = {};
 let lastFireTime = 0;
+let lastDamageTime = 0; // For invincibility frames
 let clock;
 
 // ========== DOM ELEMENTS ==========
@@ -129,12 +130,12 @@ function init() {
 
 // ========== SPACE ENVIRONMENT ==========
 function createStarfield() {
-    // Multiple layers of stars for depth
+    // Multiple layers of stars for depth - OPTIMIZED: reduced counts
     const starLayers = [
-        { count: 2000, size: 0.5, distance: 500, speed: 0.1 },
-        { count: 1500, size: 0.8, distance: 400, speed: 0.15 },
-        { count: 1000, size: 1.2, distance: 300, speed: 0.2 },
-        { count: 500, size: 1.5, distance: 200, speed: 0.25 }
+        { count: 800, size: 0.5, distance: 500, speed: 0.1 },
+        { count: 600, size: 0.8, distance: 400, speed: 0.15 },
+        { count: 400, size: 1.2, distance: 300, speed: 0.2 },
+        { count: 200, size: 1.5, distance: 200, speed: 0.25 }
     ];
     
     starLayers.forEach(layer => {
@@ -503,9 +504,7 @@ function createEnemy(type, position) {
             break;
     }
     
-    // Add glow effect
-    const glowLight = new THREE.PointLight(0xff0000, 1, 5);
-    enemyGroup.add(glowLight);
+    // OPTIMIZED: Removed PointLight glow - emissive materials already provide glow effect
     
     enemyGroup.position.copy(position);
     enemyGroup.scale.setScalar(scale);
@@ -517,7 +516,8 @@ function createEnemy(type, position) {
         speed: speed,
         scoreValue: scoreValue,
         lastShot: 0,
-        shootInterval: type === 'boss' ? 500 : 1500 + Math.random() * 1000
+        // BALANCED: Longer intervals between shots (was 500/1500-2500)
+        shootInterval: type === 'boss' ? 1000 : 2500 + Math.random() * 1500
     };
     
     scene.add(enemyGroup);
@@ -593,9 +593,7 @@ function fireLaser() {
         damage: CONFIG.laserDamage
     };
     
-    // Add glow
-    const glowLight = new THREE.PointLight(0x00ffff, 0.5, 3);
-    laser.add(glowLight);
+    // OPTIMIZED: Removed PointLight - using emissive material instead for glow effect
     
     scene.add(laser);
     lasers.push(laser);
@@ -656,28 +654,44 @@ function createEnemyLaser(enemy) {
     const laser = new THREE.Mesh(laserGeometry, laserMaterial);
     laser.position.copy(enemy.position);
     
-    // Direction towards player
+    // Direction towards player - BALANCED: Add spread/inaccuracy so lasers aren't perfect
+    const spread = 0.3; // Amount of random spread
     const direction = new THREE.Vector3()
         .subVectors(player.position, enemy.position)
         .normalize();
+    // Add random spread to make lasers dodgeable
+    direction.x += (Math.random() - 0.5) * spread;
+    direction.y += (Math.random() - 0.5) * spread;
+    direction.normalize();
     
     laser.userData = {
-        velocity: direction.multiplyScalar(0.5),
-        damage: 10,
+        velocity: direction.multiplyScalar(0.35), // BALANCED: Slower projectiles (was 0.5)
+        damage: 8, // BALANCED: Reduced damage (was 10)
         isEnemy: true
     };
     
-    const glowLight = new THREE.PointLight(0xff0000, 0.3, 2);
-    laser.add(glowLight);
+    // OPTIMIZED: Removed PointLight - MeshBasicMaterial already provides glow effect
     
     scene.add(laser);
     lasers.push(laser);
 }
 
 // ========== PARTICLE EFFECTS ==========
+// OPTIMIZED: Reusable geometries for particles
+const particleGeometries = [
+    new THREE.SphereGeometry(0.1, 4, 4),
+    new THREE.SphereGeometry(0.15, 4, 4),
+    new THREE.SphereGeometry(0.2, 4, 4),
+    new THREE.SphereGeometry(0.25, 4, 4)
+];
+
 function createExplosion(position, color = 0xff4400, count = 30) {
-    for (let i = 0; i < count; i++) {
-        const geometry = new THREE.SphereGeometry(0.1 + Math.random() * 0.2, 4, 4);
+    // OPTIMIZED: Reduce particle count for performance
+    const optimizedCount = Math.min(count, 15);
+    
+    for (let i = 0; i < optimizedCount; i++) {
+        // Reuse pre-created geometries instead of creating new ones
+        const geometry = particleGeometries[Math.floor(Math.random() * particleGeometries.length)];
         const material = new THREE.MeshBasicMaterial({
             color: color,
             transparent: true,
@@ -701,17 +715,20 @@ function createExplosion(position, color = 0xff4400, count = 30) {
         particles.push(particle);
     }
     
-    // Add flash light
-    const flash = new THREE.PointLight(color, 5, 20);
-    flash.position.copy(position);
-    flash.userData = { age: 0, maxAge: 10 };
-    scene.add(flash);
-    particles.push(flash);
+    // OPTIMIZED: Removed PointLight flash - particles already provide visual feedback
 }
 
 function createMuzzleFlash(position) {
-    const flash = new THREE.PointLight(0x00ffff, 3, 5);
+    // OPTIMIZED: Use a simple sprite/mesh instead of expensive PointLight
+    const flashGeometry = particleGeometries[2];
+    const flashMaterial = new THREE.MeshBasicMaterial({
+        color: 0x00ffff,
+        transparent: true,
+        opacity: 0.8
+    });
+    const flash = new THREE.Mesh(flashGeometry, flashMaterial);
     flash.position.copy(position);
+    flash.scale.setScalar(2);
     flash.userData = { age: 0, maxAge: 5 };
     scene.add(flash);
     particles.push(flash);
@@ -743,8 +760,8 @@ function startWave(waveNumber) {
     asteroids.forEach(a => scene.remove(a));
     asteroids = [];
     
-    // Spawn enemies based on wave
-    const enemyCount = 5 + waveNumber * 3;
+    // Spawn enemies based on wave - BALANCED: Reduced count (was 5 + wave*3)
+    const enemyCount = 3 + waveNumber * 2;
     const spawnRadius = 50;
     
     for (let i = 0; i < enemyCount; i++) {
@@ -762,8 +779,8 @@ function startWave(waveNumber) {
         createEnemy('boss', new THREE.Vector3(0, 0, -80));
     }
     
-    // Spawn asteroids
-    const asteroidCount = 3 + waveNumber;
+    // Spawn asteroids - BALANCED: Reduced count (was 3 + wave)
+    const asteroidCount = 2 + Math.floor(waveNumber * 0.5);
     for (let i = 0; i < asteroidCount; i++) {
         createAsteroid(new THREE.Vector3(
             (Math.random() - 0.5) * 60,
@@ -870,27 +887,27 @@ function checkCollisions() {
         }
     }
     
-    // Player vs Asteroids
+    // Player vs Asteroids - BALANCED: Reduced damage (was 20)
     for (let i = asteroids.length - 1; i >= 0; i--) {
         const asteroid = asteroids[i];
         const dist = asteroid.position.distanceTo(player.position);
         
         if (dist < 3) {
-            takeDamage(20);
+            takeDamage(12);
             createExplosion(asteroid.position, 0x888888, 15);
             scene.remove(asteroid);
             asteroids.splice(i, 1);
         }
     }
     
-    // Player vs Enemies (collision)
+    // Player vs Enemies (collision) - BALANCED: Reduced damage (was 30)
     for (let i = enemies.length - 1; i >= 0; i--) {
         const enemy = enemies[i];
         const dist = enemy.position.distanceTo(player.position);
         const collisionRadius = enemy.userData.type === 'boss' ? 5 : 2;
         
         if (dist < collisionRadius) {
-            takeDamage(30);
+            takeDamage(15);
             damageEnemy(enemy, 50);
         }
     }
@@ -929,6 +946,11 @@ function damageEnemy(enemy, damage) {
 }
 
 function takeDamage(damage) {
+    // BALANCED: Invincibility frames - can only take damage every 500ms
+    const now = Date.now();
+    if (now - lastDamageTime < 500) return;
+    lastDamageTime = now;
+    
     playerHealth -= damage;
     
     if (playerHealth <= 0) {
@@ -998,15 +1020,22 @@ function updatePlayer() {
 function updateEnemies() {
     if (currentState !== GameState.PLAYING) return;
     
-    enemies.forEach(enemy => {
+    // FIXED: Use reverse for loop to safely remove enemies during iteration
+    for (let i = enemies.length - 1; i >= 0; i--) {
+        const enemy = enemies[i];
+        
         // Move towards player (on-rails effect)
         enemy.position.z += enemy.userData.speed + CONFIG.forwardSpeed;
         
-        // Slight tracking towards player
+        // BALANCED: Much weaker tracking - only track when far from player, stop when close
         const dx = player.position.x - enemy.position.x;
         const dy = player.position.y - enemy.position.y;
-        enemy.position.x += dx * 0.005;
-        enemy.position.y += dy * 0.003;
+        const distanceZ = Math.abs(enemy.position.z - player.position.z);
+        // Only track when enemy is far away, disable tracking when close (gives player time to dodge)
+        if (distanceZ > 30) {
+            enemy.position.x += dx * 0.002;
+            enemy.position.y += dy * 0.001;
+        }
         
         // Rotate towards player
         enemy.lookAt(player.position);
@@ -1030,18 +1059,18 @@ function updateEnemies() {
         
         // Remove if too far behind
         if (enemy.position.z > 20) {
-            const index = enemies.indexOf(enemy);
-            if (index > -1) {
-                enemies.splice(index, 1);
-            }
+            enemies.splice(i, 1);
             scene.remove(enemy);
             checkWaveComplete();
         }
-    });
+    }
 }
 
 function updateAsteroids() {
-    asteroids.forEach(asteroid => {
+    // FIXED: Use reverse for loop to safely remove asteroids during iteration
+    for (let i = asteroids.length - 1; i >= 0; i--) {
+        const asteroid = asteroids[i];
+        
         asteroid.position.z += asteroid.userData.speed + CONFIG.forwardSpeed;
         asteroid.rotation.x += asteroid.userData.rotationSpeed.x;
         asteroid.rotation.y += asteroid.userData.rotationSpeed.y;
@@ -1049,13 +1078,10 @@ function updateAsteroids() {
         
         // Remove if too far behind
         if (asteroid.position.z > 30) {
-            const index = asteroids.indexOf(asteroid);
-            if (index > -1) {
-                asteroids.splice(index, 1);
-            }
+            asteroids.splice(i, 1);
             scene.remove(asteroid);
         }
-    });
+    }
     
     // Spawn new asteroids
     if (Math.random() < 0.01 && currentState === GameState.PLAYING) {
@@ -1108,31 +1134,30 @@ function updateParticles() {
         
         if (particle.material) {
             particle.material.opacity = 1 - (particle.userData.age / particle.userData.maxAge);
-        }
-        
-        if (particle.isLight) {
-            particle.intensity = 5 * (1 - particle.userData.age / particle.userData.maxAge);
+            // OPTIMIZED: Scale down particles as they fade for better visual
+            const scale = 1 - (particle.userData.age / particle.userData.maxAge) * 0.5;
+            particle.scale.setScalar(scale);
         }
         
         if (particle.userData.age >= particle.userData.maxAge) {
             scene.remove(particle);
+            // OPTIMIZED: Dispose of material to prevent memory leaks
+            if (particle.material) particle.material.dispose();
             particles.splice(i, 1);
         }
     }
 }
 
 function updateEnvironment() {
-    // Move stars for flying effect
+    // OPTIMIZED: Move entire starfield groups instead of individual vertices
+    // This avoids updating thousands of vertices every frame
     stars.forEach(starField => {
         starField.rotation.z += 0.0001;
-        const positions = starField.geometry.attributes.position.array;
-        for (let i = 2; i < positions.length; i += 3) {
-            positions[i] += starField.userData.speed;
-            if (positions[i] > 300) {
-                positions[i] = -300;
-            }
+        // Move the entire starfield forward and reset when needed
+        starField.position.z += starField.userData.speed;
+        if (starField.position.z > 100) {
+            starField.position.z = -100;
         }
-        starField.geometry.attributes.position.needsUpdate = true;
     });
     
     // Subtle nebula movement
@@ -1186,10 +1211,21 @@ function startGame() {
     // Clear any existing entities
     lasers.forEach(l => scene.remove(l));
     lasers = [];
-    particles.forEach(p => scene.remove(p));
+    particles.forEach(p => {
+        scene.remove(p);
+        if (p.material) p.material.dispose();
+    });
     particles = [];
+    enemies.forEach(e => scene.remove(e));
+    enemies = [];
+    asteroids.forEach(a => scene.remove(a));
+    asteroids = [];
     
+    // Hide ALL screens and show HUD
     screens.mainMenu.classList.remove('active');
+    screens.gameOver.classList.remove('active');
+    screens.pause.classList.remove('active');
+    screens.waveComplete.classList.remove('active');
     screens.hud.classList.remove('hidden');
     hudElements.specialIndicator.classList.add('ready');
     
