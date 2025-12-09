@@ -1,3 +1,10 @@
+---
+layout: default
+title: CSS
+parent: Resource Hub
+nav_order: 2
+---
+
 # 🎨 CSS - Cascading Style Sheets
 
 ## What is CSS?

@@ -1,3 +1,10 @@
+---
+layout: default
+title: HTML Cheat Sheet
+parent: HTML
+nav_order: 2
+---
+
 # 📋 HTML Cheat Sheet
 
 Quick reference guide for common HTML elements and attributes.

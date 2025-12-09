@@ -1,3 +1,10 @@
+---
+layout: default
+title: AI Tools & Resources
+parent: AI Assistants
+nav_order: 3
+---
+
 # 🔗 AI Tools & Resources Directory
 
 A comprehensive list of AI tools and resources for coding assistance.

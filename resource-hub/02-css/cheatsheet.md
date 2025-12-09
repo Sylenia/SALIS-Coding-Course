@@ -1,3 +1,10 @@
+---
+layout: default
+title: CSS Cheat Sheet
+parent: CSS
+nav_order: 2
+---
+
 # 📋 CSS Cheat Sheet
 
 Quick reference guide for CSS properties and values.

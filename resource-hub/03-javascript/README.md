@@ -1,3 +1,10 @@
+---
+layout: default
+title: JavaScript
+parent: Resource Hub
+nav_order: 3
+---
+
 # ⚡ JavaScript - Programming Language of the Web
 
 ## What is JavaScript?

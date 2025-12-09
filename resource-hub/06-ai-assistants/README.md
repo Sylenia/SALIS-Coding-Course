@@ -1,3 +1,10 @@
+---
+layout: default
+title: AI Assistants
+parent: Resource Hub
+nav_order: 6
+---
+
 # 🤖 AI Assistants & Large Language Models (LLMs)
 
 ## What are AI Coding Assistants?

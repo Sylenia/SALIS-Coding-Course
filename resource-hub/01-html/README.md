@@ -1,3 +1,10 @@
+---
+layout: default
+title: HTML
+parent: Resource Hub
+nav_order: 1
+---
+
 # 🌐 HTML - HyperText Markup Language
 
 ## What is HTML?

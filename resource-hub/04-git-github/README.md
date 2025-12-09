@@ -1,3 +1,10 @@
+---
+layout: default
+title: Git & GitHub
+parent: Resource Hub
+nav_order: 4
+---
+
 # 🌿 Git & GitHub - Version Control
 
 ## What is Git?

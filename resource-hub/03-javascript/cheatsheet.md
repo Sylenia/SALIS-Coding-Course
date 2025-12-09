@@ -1,3 +1,10 @@
+---
+layout: default
+title: JavaScript Cheat Sheet
+parent: JavaScript
+nav_order: 2
+---
+
 # 📋 JavaScript Cheat Sheet
 
 Quick reference guide for JavaScript syntax and methods.

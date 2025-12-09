@@ -1,3 +1,10 @@
+---
+layout: default
+title: npm Commands Cheat Sheet
+parent: Node.js & npm
+nav_order: 2
+---
+
 # 📋 npm Commands Cheat Sheet
 
 Quick reference guide for npm commands.

@@ -1,0 +1,36 @@
+# SALIS Coding Course - Jekyll Configuration
+
+# Site settings
+title: SALIS Coding Course
+description: Learn web development, version control, and modern development tools
+url: "https://sylenia.github.io"
+baseurl: "/SALIS-Coding-Course"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Theme - "just-the-docs" is great for documentation
+remote_theme: just-the-docs/just-the-docs
+
+# Enable GitHub Pages
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+# Just the Docs theme settings
+color_scheme: dark
+
+# Aux links (top right)
+aux_links:
+  "View on GitHub":
+    - "https://github.com/Sylenia/SALIS-Coding-Course"
+
+# Footer
+footer_content: "SALIS High School Coding Course &copy; 2024"
+
+# Exclude files from Jekyll build
+exclude:
+  - node_modules/
+  - .git/
+  - .gitignore

@@ -1,3 +1,10 @@
+---
+layout: default
+title: Git Commands Cheat Sheet
+parent: Git & GitHub
+nav_order: 2
+---
+
 # 📋 Git Commands Cheat Sheet
 
 Quick reference guide for essential Git commands.

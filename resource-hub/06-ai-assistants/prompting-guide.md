@@ -1,3 +1,10 @@
+---
+layout: default
+title: AI Prompting Guide
+parent: AI Assistants
+nav_order: 2
+---
+
 # 📋 AI Prompting Cheat Sheet
 
 Quick reference guide for effective AI prompting.

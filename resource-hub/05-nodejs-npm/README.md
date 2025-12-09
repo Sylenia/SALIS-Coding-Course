@@ -1,3 +1,10 @@
+---
+layout: default
+title: Node.js & npm
+parent: Resource Hub
+nav_order: 5
+---
+
 # 📦 Node.js & npm - JavaScript Runtime & Package Manager
 
 ## What is Node.js?
