@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistants Documentation | SALIS Coding Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">💻</span>
+                <span>SALIS Coding</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Resources</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <section class="content-section">
+            <div class="container content-container">
+                <article class="markdown-content">
+                    <h1>🤖 AI Assistants &amp; Large Language Models (LLMs)</h1>
+
+                    <h2>What are AI Coding Assistants?</h2>
+                    <p>AI coding assistants are tools powered by Large Language Models (LLMs) that help developers write, understand, and debug code. They can generate code from natural language descriptions, explain existing code, and assist with various programming tasks.</p>
+
+                    <p><strong>Guides:</strong> <a href="prompting-guide.html">AI Prompting Guide</a> · <a href="tools-and-resources.html">AI Tools &amp; Resources</a></p>
+
+                    <hr>
+
+                    <h2>📚 Table of Contents</h2>
+                    <ol>
+                        <li><a href="#understanding-ai--llms">Understanding AI &amp; LLMs</a></li>
+                        <li><a href="#how-llms-work">How LLMs Work</a></li>
+                        <li><a href="#popular-ai-coding-assistants">Popular AI Coding Assistants</a></li>
+                        <li><a href="#using-github-copilot">Using GitHub Copilot</a></li>
+                        <li><a href="#effective-prompting">Effective Prompting</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                        <li><a href="#limitations--considerations">Limitations &amp; Considerations</a></li>
+                        <li><a href="#ethics-and-responsible-use">Ethics and Responsible Use</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ol>
+
+                    <hr>
+
+                    <h2 id="understanding-ai--llms">Understanding AI &amp; LLMs</h2>
+
+                    <h3>Key Terms</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>AI</strong> (Artificial Intelligence)</td><td>Computer systems that can perform tasks requiring human-like intelligence</td></tr>
+                            <tr><td><strong>Machine Learning</strong></td><td>AI systems that learn from data rather than explicit programming</td></tr>
+                            <tr><td><strong>LLM</strong> (Large Language Model)</td><td>AI models trained on vast amounts of text to understand and generate language</td></tr>
+                            <tr><td><strong>Neural Network</strong></td><td>Computing systems inspired by biological neural networks</td></tr>
+                            <tr><td><strong>Training Data</strong></td><td>The text/code data used to train the AI model</td></tr>
+                            <tr><td><strong>Inference</strong></td><td>When an AI model generates output based on input</td></tr>
+                            <tr><td><strong>Token</strong></td><td>A unit of text (word or part of a word) that LLMs process</td></tr>
+                            <tr><td><strong>Prompt</strong></td><td>The input/instruction you give to an AI</td></tr>
+                            <tr><td><strong>Context Window</strong></td><td>The amount of text an LLM can consider at once</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Brief History</h3>
+                    <ul>
+                        <li><strong>2017</strong>: Transformer architecture introduced (foundation of modern LLMs)</li>
+                        <li><strong>2018</strong>: GPT-1 released by OpenAI</li>
+                        <li><strong>2020</strong>: GPT-3 shows significant capabilities</li>
+                        <li><strong>2021</strong>: GitHub Copilot launched</li>
+                        <li><strong>2022</strong>: ChatGPT released, AI coding becomes mainstream</li>
+                        <li><strong>2023-2024</strong>: GPT-4, Claude, and other advanced models emerge</li>
+                    </ul>
+
+                    <h3>Types of AI Models</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model Type</th>
+                                <th>Description</th>
+                                <th>Examples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>General Purpose</strong></td><td>Can handle many tasks</td><td>GPT-4, Claude</td></tr>
+                            <tr><td><strong>Code-Specific</strong></td><td>Optimized for programming</td><td>Codex, CodeLlama</td></tr>
+                            <tr><td><strong>Multimodal</strong></td><td>Handles text, images, etc.</td><td>GPT-4V, Gemini</td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2 id="how-llms-work">How LLMs Work</h2>
+
+                    <h3>The Basics</h3>
+                    <ol>
+                        <li><strong>Training</strong>: LLMs are trained on massive datasets of text and code from the internet, books, and documentation</li>
+                        <li><strong>Pattern Learning</strong>: They learn patterns, syntax, and relationships between concepts</li>
+                        <li><strong>Prediction</strong>: Given input text, they predict what text should come next</li>
+                        <li><strong>Generation</strong>: They generate responses token by token based on probability</li>
+                    </ol>
+
+                    <h3>Simplified Explanation</h3>
+                    <pre><code>Input (Prompt)
+     ↓
+┌─────────────┐
+│    LLM      │  ← Trained on billions of examples
+│   Model     │
+└─────────────┘
+     ↓
+Output (Response)</code></pre>
+
+                    <h3>Important Concepts</h3>
+
+                    <h4>Tokens</h4>
+                    <p>LLMs process text as "tokens" - pieces of words:</p>
+                    <pre><code>"Hello, how are you?" 
+→ ["Hello", ",", " how", " are", " you", "?"]
+→ [6 tokens]</code></pre>
+
+                    <h4>Context Window</h4>
+                    <p>The context window is how much text the model can "see" at once:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Context Window</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>GPT-3.5</td><td>~4,000 tokens</td></tr>
+                            <tr><td>GPT-4</td><td>~8,000 - 128,000 tokens</td></tr>
+                            <tr><td>Claude 3</td><td>~200,000 tokens</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Temperature</h4>
+                    <p>Controls randomness in responses:</p>
+                    <ul>
+                        <li><strong>Low (0.0-0.3)</strong>: More deterministic, focused responses</li>
+                        <li><strong>Medium (0.5-0.7)</strong>: Balanced creativity</li>
+                        <li><strong>High (0.8-1.0)</strong>: More creative, varied responses</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2 id="popular-ai-coding-assistants">Popular AI Coding Assistants</h2>
+
+                    <h3>GitHub Copilot</h3>
+                    <p><strong>What it is</strong>: AI pair programmer that suggests code as you type</p>
+                    <p><strong>Features</strong>:</p>
+                    <ul>
+                        <li>Code completion in real-time</li>
+                        <li>Generates entire functions from comments</li>
+                        <li>Supports many languages</li>
+                        <li>Integrates with VS Code, JetBrains, Neovim</li>
+                    </ul>
+                    <p><strong>Website</strong>: <a href="https://github.com/features/copilot" target="_blank" rel="noopener">github.com/features/copilot</a></p>
+                    <p><strong>Pricing</strong>: Free for students, educators, and open source maintainers</p>
+
+                    <hr>
+
+                    <h3>ChatGPT</h3>
+                    <p><strong>What it is</strong>: Conversational AI that can help with coding tasks</p>
+                    <p><strong>Features</strong>:</p>
+                    <ul>
+                        <li>Explain code</li>
+                        <li>Debug errors</li>
+                        <li>Generate code from descriptions</li>
+                        <li>Answer programming questions</li>
+                    </ul>
+                    <p><strong>Website</strong>: <a href="https://chat.openai.com" target="_blank" rel="noopener">chat.openai.com</a></p>
+                    <p><strong>Pricing</strong>: Free tier available, Plus subscription for GPT-4</p>
+
+                    <hr>
+
+                    <h3>Claude</h3>
+                    <p><strong>What it is</strong>: AI assistant by Anthropic with strong coding capabilities</p>
+                    <p><strong>Features</strong>:</p>
+                    <ul>
+                        <li>Large context window (can handle big codebases)</li>
+                        <li>Clear explanations</li>
+                        <li>Code generation and review</li>
+                    </ul>
+                    <p><strong>Website</strong>: <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a></p>
+                    <p><strong>Pricing</strong>: Free tier available</p>
+
+                    <hr>
+
+                    <h3>Other Tools</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Description</th>
+                                <th>Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Cursor</strong></td><td>AI-first code editor</td><td><a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a></td></tr>
+                            <tr><td><strong>Codeium</strong></td><td>Free AI code completion</td><td><a href="https://codeium.com" target="_blank" rel="noopener">codeium.com</a></td></tr>
+                            <tr><td><strong>Amazon CodeWhisperer</strong></td><td>AWS-integrated AI coding</td><td><a href="https://aws.amazon.com/codewhisperer/" target="_blank" rel="noopener">aws.amazon.com/codewhisperer</a></td></tr>
+                            <tr><td><strong>Tabnine</strong></td><td>AI code completion</td><td><a href="https://www.tabnine.com" target="_blank" rel="noopener">tabnine.com</a></td></tr>
+                            <tr><td><strong>Replit AI</strong></td><td>Integrated in Replit IDE</td><td><a href="https://replit.com" target="_blank" rel="noopener">replit.com</a></td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2 id="using-github-copilot">Using GitHub Copilot</h2>
+
+                    <h3>Installation</h3>
+                    <ol>
+                        <li><strong>Get access</strong>: Sign up at <a href="https://github.com/features/copilot" target="_blank" rel="noopener">github.com/features/copilot</a></li>
+                        <li><strong>Install extension</strong>: In VS Code, install "GitHub Copilot" extension</li>
+                        <li><strong>Sign in</strong>: Connect with your GitHub account</li>
+                    </ol>
+
+                    <h3>Basic Usage</h3>
+
+                    <h4>Code Completion</h4>
+                    <p>Just start typing and Copilot suggests completions:</p>
+                    <pre><code class="language-javascript">// Type this:
+function calculateArea(width, height) {
+    // Copilot suggests:
+    return width * height;
+}</code></pre>
+
+                    <h4>Writing Comments</h4>
+                    <p>Describe what you want in a comment:</p>
+                    <pre><code class="language-javascript">// Function to check if a string is a palindrome
+// Copilot generates the function below
+function isPalindrome(str) {
+    const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+    return cleaned === cleaned.split('').reverse().join('');
+}</code></pre>
+
+                    <h4>Accepting Suggestions</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Shortcut (VS Code)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Accept suggestion</td><td><code>Tab</code></td></tr>
+                            <tr><td>Reject suggestion</td><td><code>Esc</code></td></tr>
+                            <tr><td>Next suggestion</td><td><code>Alt + ]</code></td></tr>
+                            <tr><td>Previous suggestion</td><td><code>Alt + [</code></td></tr>
+                            <tr><td>Show all suggestions</td><td><code>Ctrl + Enter</code></td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Copilot Chat</h3>
+                    <p>Use natural language to:</p>
+                    <ul>
+                        <li>Ask questions about code</li>
+                        <li>Generate code from descriptions</li>
+                        <li>Get help debugging</li>
+                        <li>Explain existing code</li>
+                    </ul>
+                    <pre><code>/explain what does this function do?
+/fix there's a bug in this code
+/tests generate tests for this function</code></pre>
+
+                    <hr>
+
+                    <h2 id="effective-prompting">Effective Prompting</h2>
+
+                    <h3>What is Prompting?</h3>
+                    <p>Prompting is the art of writing instructions for AI to get the best results. Better prompts = better outputs.</p>
+
+                    <h3>Prompt Structure</h3>
+                    <pre><code>[Context] + [Task] + [Constraints] + [Format]</code></pre>
+
+                    <h3>Good Prompt Examples</h3>
+
+                    <h4>❌ Bad Prompt</h4>
+                    <pre><code>make a button</code></pre>
+
+                    <h4>✅ Good Prompt</h4>
+                    <pre><code>Create an HTML button with the following:
+- Text: "Submit"
+- Class: "btn-primary"
+- Blue background color
+- White text
+- Rounded corners
+- Hover effect that darkens the color</code></pre>
+
+                    <h3>Tips for Better Prompts</h3>
+
+                    <h4>1. Be Specific</h4>
+                    <pre><code>❌ "Make a function to sort"
+✅ "Create a JavaScript function that sorts an array of objects 
+   by the 'date' property in descending order"</code></pre>
+
+                    <h4>2. Provide Context</h4>
+                    <pre><code>❌ "Fix the bug"
+✅ "I have a function that should return the sum of an array, 
+   but it returns NaN when the array is empty. Here's my code: 
+   [paste code]. How can I fix it?"</code></pre>
+
+                    <h4>3. Specify Output Format</h4>
+                    <pre><code>❌ "Explain promises"
+✅ "Explain JavaScript Promises to a beginner. Include:
+   - A simple definition
+   - A code example
+   - Common use cases"</code></pre>
+
+                    <h4>4. Break Complex Tasks Down</h4>
+                    <pre><code>❌ "Build a complete todo app"
+✅ "Let's build a todo app step by step:
+   1. First, create the HTML structure
+   2. Then we'll add the CSS styling
+   3. Finally, add the JavaScript functionality"</code></pre>
+
+                    <h4>5. Iterate and Refine</h4>
+                    <pre><code>Initial: "Create a login form"
+Refined: "Create a login form with email and password fields, 
+         include validation, and show error messages"
+More refined: "...also add 'remember me' checkbox and 
+              'forgot password' link"</code></pre>
+
+                    <h3>Prompting Techniques</h3>
+
+                    <h4>Few-Shot Prompting</h4>
+                    <p>Provide examples of what you want:</p>
+                    <pre><code>Convert these to camelCase:
+- user_name → userName
+- first_name → firstName
+- last_login_date → ?</code></pre>
+
+                    <h4>Chain of Thought</h4>
+                    <p>Ask for step-by-step reasoning:</p>
+                    <pre><code>Explain how you would implement user authentication:
+1. What components are needed?
+2. What's the data flow?
+3. What security considerations are there?
+Then provide the code.</code></pre>
+
+                    <h4>Role Prompting</h4>
+                    <p>Assign a role to the AI:</p>
+                    <pre><code>Act as a senior JavaScript developer reviewing my code. 
+Point out any issues with this function and suggest improvements:
+[code]</code></pre>
+
+                    <hr>
+
+                    <h2 id="best-practices">Best Practices</h2>
+
+                    <h3>✅ Do's</h3>
+                    <ol>
+                        <li><strong>Verify all AI-generated code</strong> - Don't blindly trust it</li>
+                        <li><strong>Understand what the code does</strong> before using it</li>
+                        <li><strong>Use AI to learn</strong> - Ask it to explain concepts</li>
+                        <li><strong>Start with clear prompts</strong> - Be specific about what you need</li>
+                        <li><strong>Iterate on suggestions</strong> - Ask for modifications</li>
+                        <li><strong>Use AI for boilerplate</strong> - Great for repetitive code</li>
+                        <li><strong>Check for security issues</strong> - AI may generate vulnerable code</li>
+                        <li><strong>Keep learning</strong> - AI is a tool, not a replacement for skills</li>
+                    </ol>
+
+                    <h3>❌ Don'ts</h3>
+                    <ol>
+                        <li><strong>Don't copy without understanding</strong> - Always read and understand</li>
+                        <li><strong>Don't share sensitive data</strong> - No passwords, API keys, or private code</li>
+                        <li><strong>Don't rely on AI for complex architecture</strong> - It lacks full context</li>
+                        <li><strong>Don't skip testing</strong> - AI code can have bugs</li>
+                        <li><strong>Don't plagiarize</strong> - Understand academic honesty rules</li>
+                        <li><strong>Don't trust 100%</strong> - AI makes mistakes and can "hallucinate"</li>
+                    </ol>
+
+                    <h3>Using AI for Learning</h3>
+
+                    <h4>Ask for Explanations</h4>
+                    <pre><code>"Explain this JavaScript code line by line:
+[paste code]"</code></pre>
+
+                    <h4>Request Examples</h4>
+                    <pre><code>"Show me 3 different ways to filter an array in JavaScript 
+with examples"</code></pre>
+
+                    <h4>Debug with AI</h4>
+                    <pre><code>"My code has an error: [error message]
+Here's my code: [paste code]
+What's wrong and how do I fix it?"</code></pre>
+
+                    <h4>Learn Best Practices</h4>
+                    <pre><code>"Review my code and suggest improvements following 
+JavaScript best practices:
+[paste code]"</code></pre>
+
+                    <hr>
+
+                    <h2 id="limitations--considerations">Limitations &amp; Considerations</h2>
+
+                    <h3>What AI Cannot Do Well</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Limitation</th>
+                                <th>Explanation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Full context</strong></td><td>Can't understand your entire project</td></tr>
+                            <tr><td><strong>Real-time information</strong></td><td>Knowledge has a cutoff date</td></tr>
+                            <tr><td><strong>Complex logic</strong></td><td>May struggle with intricate business logic</td></tr>
+                            <tr><td><strong>Testing</strong></td><td>Can't actually run or test code</td></tr>
+                            <tr><td><strong>Security</strong></td><td>May generate vulnerable code</td></tr>
+                            <tr><td><strong>Originality</strong></td><td>Based on training data, not truly creative</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Hallucinations</h3>
+                    <p>AI can confidently generate incorrect information:</p>
+                    <ul>
+                        <li>Non-existent APIs or functions</li>
+                        <li>Incorrect syntax for specific versions</li>
+                        <li>Made-up libraries or packages</li>
+                    </ul>
+                    <p><strong>Always verify</strong> generated code works!</p>
+
+                    <h3>Privacy Concerns</h3>
+                    <ul>
+                        <li>Code sent to AI services may be stored or used for training</li>
+                        <li>Don't share sensitive information</li>
+                        <li>Check company policies about AI use</li>
+                        <li>Some tools offer privacy options</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2 id="ethics-and-responsible-use">Ethics and Responsible Use</h2>
+
+                    <h3>Academic Integrity</h3>
+                    <ul>
+                        <li><strong>Understand your school's policy</strong> on AI use</li>
+                        <li><strong>Always disclose</strong> when you've used AI assistance</li>
+                        <li><strong>Learn the concepts</strong> - don't just copy solutions</li>
+                        <li><strong>Use AI as a tutor</strong>, not as someone to do your homework</li>
+                    </ul>
+
+                    <h3>Professional Responsibility</h3>
+                    <ul>
+                        <li><strong>Review all generated code</strong> thoroughly</li>
+                        <li><strong>Don't claim AI work as entirely your own</strong> without disclosure</li>
+                        <li><strong>Consider copyright</strong> - AI training data sources vary</li>
+                        <li><strong>Stay accountable</strong> - you're responsible for code you ship</li>
+                    </ul>
+
+                    <h3>Environmental Considerations</h3>
+                    <ul>
+                        <li>AI training and inference uses significant energy</li>
+                        <li>Use AI purposefully, not wastefully</li>
+                        <li>Consider the environmental impact of technology</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2 id="resources">🔗 Resources</h2>
+
+                    <h3>Learning About AI &amp; LLMs</h3>
+                    <ul>
+                        <li><a href="https://openai.com/blog/chatgpt" target="_blank" rel="noopener">What is ChatGPT? (OpenAI)</a> - Introduction from OpenAI</li>
+                        <li><a href="https://www.youtube.com/watch?v=5sLYAQS9sWQ" target="_blank" rel="noopener">Large Language Models Explained</a> - Visual explanation</li>
+                        <li><a href="https://www.youtube.com/watch?v=osKyvYJ3PRM" target="_blank" rel="noopener">A Beginner's Guide to LLMs</a> - freeCodeCamp video</li>
+                        <li><a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank" rel="noopener">AI for Everyone (Coursera)</a> - Andrew Ng's course</li>
+                    </ul>
+
+                    <h3>AI Coding Assistants Documentation</h3>
+                    <ul>
+                        <li><a href="https://docs.github.com/en/copilot" target="_blank" rel="noopener">GitHub Copilot Docs</a> - Official documentation</li>
+                        <li><a href="https://platform.openai.com/docs/" target="_blank" rel="noopener">OpenAI API Documentation</a> - For advanced use</li>
+                        <li><a href="https://docs.anthropic.com/" target="_blank" rel="noopener">Anthropic Claude Docs</a> - Claude documentation</li>
+                    </ul>
+
+                    <h3>Prompt Engineering</h3>
+                    <ul>
+                        <li><a href="https://www.promptingguide.ai/" target="_blank" rel="noopener">Prompt Engineering Guide</a> - Comprehensive guide</li>
+                        <li><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener">OpenAI Best Practices</a> - From OpenAI</li>
+                        <li><a href="https://learnprompting.org/" target="_blank" rel="noopener">Learn Prompting</a> - Free course</li>
+                    </ul>
+
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="https://github.com/features/copilot" target="_blank" rel="noopener">GitHub Copilot</a> - AI pair programmer</li>
+                        <li><a href="https://chat.openai.com" target="_blank" rel="noopener">ChatGPT</a> - Conversational AI</li>
+                        <li><a href="https://claude.ai" target="_blank" rel="noopener">Claude</a> - Anthropic's AI assistant</li>
+                        <li><a href="https://www.perplexity.ai/" target="_blank" rel="noopener">Perplexity</a> - AI search engine</li>
+                        <li><a href="https://www.phind.com/" target="_blank" rel="noopener">Phind</a> - AI search for developers</li>
+                    </ul>
+
+                    <h3>Ethics &amp; Safety</h3>
+                    <ul>
+                        <li><a href="https://www.eacambridge.org/ai-safety-fundamentals" target="_blank" rel="noopener">AI Safety Fundamentals</a> - AI safety course</li>
+                        <li><a href="https://ai.google/responsibility/responsible-ai-practices/" target="_blank" rel="noopener">Responsible AI Practices</a> - Google's guidelines</li>
+                        <li><a href="https://www.acm.org/code-of-ethics" target="_blank" rel="noopener">ACM Code of Ethics</a> - Professional ethics</li>
+                    </ul>
+
+                    <h3>Videos &amp; Channels</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/c/Fireship" target="_blank" rel="noopener">Fireship</a> - Tech explanations including AI</li>
+                        <li><a href="https://www.youtube.com/c/K%C3%A1rolyZsolnai" target="_blank" rel="noopener">Two Minute Papers</a> - AI research explained</li>
+                        <li><a href="https://www.youtube.com/@aiexplained-official" target="_blank" rel="noopener">AI Explained</a> - AI concepts</li>
+                    </ul>
+
+                    <h3>Stay Updated</h3>
+                    <ul>
+                        <li><a href="https://www.theverge.com/ai-artificial-intelligence" target="_blank" rel="noopener">AI News (The Verge)</a></li>
+                        <li><a href="https://www.technologyreview.com/topic/artificial-intelligence/" target="_blank" rel="noopener">MIT Technology Review - AI</a></li>
+                        <li><a href="https://www.reddit.com/r/artificial/" target="_blank" rel="noopener">r/artificial</a> - Reddit AI community</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>📝 Exercises</h2>
+
+                    <h3>Exercise 1: Code Generation</h3>
+                    <ol>
+                        <li>Use an AI assistant to generate a function</li>
+                        <li>Review the generated code</li>
+                        <li>Test it and identify any issues</li>
+                        <li>Ask the AI to improve it</li>
+                    </ol>
+
+                    <h3>Exercise 2: Debugging with AI</h3>
+                    <ol>
+                        <li>Take buggy code</li>
+                        <li>Ask AI to identify the bug</li>
+                        <li>Compare AI's solution with your own fix</li>
+                        <li>Evaluate which is better and why</li>
+                    </ol>
+
+                    <h3>Exercise 3: Learning with AI</h3>
+                    <ol>
+                        <li>Pick a concept you don't understand</li>
+                        <li>Ask AI to explain it in different ways</li>
+                        <li>Ask for examples</li>
+                        <li>Test your understanding with practice problems</li>
+                    </ol>
+
+                    <h3>Exercise 4: Prompt Comparison</h3>
+                    <ol>
+                        <li>Write a vague prompt and get a response</li>
+                        <li>Write a detailed prompt for the same task</li>
+                        <li>Compare the results</li>
+                        <li>Identify what made the second prompt better</li>
+                    </ol>
+
+                    <hr>
+
+                    <p><em>Previous: <a href="../05-nodejs-npm/index.html">Node.js &amp; npm Documentation</a> | <a href="../index.html">Back to Main Index</a></em></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">💻</span>
+                    <span>SALIS Coding Course</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Sylenia/SALIS-Coding-Course" target="_blank" rel="noopener">
+                        <svg class="github-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SALIS High School Coding Course. Happy Coding! 🎉</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

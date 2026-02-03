@@ -544,6 +544,152 @@ body {
 }
 
 /* ================================
+   Content Pages (Resource Hub)
+================================ */
+.content-page {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+}
+
+.content-section {
+    padding: 2.5rem 0;
+}
+
+.content-container {
+    max-width: 900px;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4 {
+    margin: 2rem 0 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.markdown-content h1 {
+    font-size: 2.5rem;
+    margin-top: 0;
+}
+
+.markdown-content h2 {
+    font-size: 1.75rem;
+}
+
+.markdown-content h3 {
+    font-size: 1.35rem;
+}
+
+.markdown-content h4 {
+    font-size: 1.1rem;
+}
+
+.markdown-content p {
+    color: var(--text-secondary);
+    margin: 0.75rem 0;
+}
+
+.markdown-content a {
+    color: var(--primary-light);
+    text-decoration: none;
+}
+
+.markdown-content a:hover {
+    text-decoration: underline;
+}
+
+.markdown-content hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+    margin: 1rem 0 1rem 1.5rem;
+    color: var(--text-secondary);
+}
+
+.markdown-content li {
+    margin: 0.5rem 0;
+}
+
+.markdown-content li input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: translateY(1px);
+}
+
+.markdown-content blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 1rem;
+    color: var(--text-secondary);
+    margin: 1.5rem 0;
+}
+
+.markdown-content code {
+    font-family: var(--font-mono);
+    background: rgba(99, 102, 241, 0.15);
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.95em;
+}
+
+.markdown-content pre {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.markdown-content pre code {
+    background: transparent;
+    padding: 0;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.markdown-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.markdown-content th,
+.markdown-content td {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    vertical-align: top;
+}
+
+.markdown-content th {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.markdown-content tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.markdown-content .note {
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin: 1.5rem 0;
+    color: var(--text-secondary);
+}
+
+/* ================================
    Responsive Design
 ================================ */
 @media (max-width: 968px) {

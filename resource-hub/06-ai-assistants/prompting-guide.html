@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Prompting Guide | SALIS Coding Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">💻</span>
+                <span>SALIS Coding</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Resources</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <section class="content-section">
+            <div class="container content-container">
+                <article class="markdown-content">
+                    <h1>📋 AI Prompting Cheat Sheet</h1>
+                    <p>Quick reference guide for effective AI prompting.</p>
+
+                    <hr>
+
+                    <h2>Basic Prompt Structure</h2>
+                    <pre><code>[Context] + [Task] + [Constraints] + [Format]</code></pre>
+
+                    <p><strong>Example:</strong></p>
+                    <pre><code>I'm building a simple web app (context).
+Create a JavaScript function (task)
+that validates email addresses (more specific task).
+It should return true/false (constraint)
+and include comments explaining each step (format).</code></pre>
+
+                    <hr>
+
+                    <h2>Prompt Formulas</h2>
+
+                    <h3>Code Generation</h3>
+                    <pre><code>Create a [language] [type] that [action].
+
+Requirements:
+- [requirement 1]
+- [requirement 2]
+
+Include [additional elements].</code></pre>
+
+                    <p><strong>Example:</strong></p>
+                    <pre><code>Create a JavaScript function that calculates 
+the total price of items in a shopping cart.
+
+Requirements:
+- Accept an array of objects with price and quantity
+- Apply a 10% discount if total exceeds $100
+
+Include error handling for invalid inputs.</code></pre>
+
+                    <hr>
+
+                    <h3>Code Explanation</h3>
+                    <pre><code>Explain this [language] code step by step.
+Focus on [specific aspect].
+Assume I'm a [skill level].
+
+[paste code]</code></pre>
+
+                    <p><strong>Example:</strong></p>
+                    <pre><code>Explain this JavaScript code step by step.
+Focus on the async/await syntax.
+Assume I'm a beginner.
+
+async function fetchData() {
+    const response = await fetch('/api/data');
+    const data = await response.json();
+    return data;
+}</code></pre>
+
+                    <hr>
+
+                    <h3>Debugging</h3>
+                    <pre><code>I have a bug in my [language] code.
+
+Expected behavior: [what should happen]
+Actual behavior: [what's happening]
+Error message: [if any]
+
+Here's my code:
+[paste code]
+
+What's causing this and how do I fix it?</code></pre>
+
+                    <hr>
+
+                    <h3>Code Review</h3>
+                    <pre><code>Review this [language] code for:
+- [aspect 1: e.g., best practices]
+- [aspect 2: e.g., performance]
+- [aspect 3: e.g., security]
+
+Provide specific suggestions for improvement.
+
+[paste code]</code></pre>
+
+                    <hr>
+
+                    <h3>Learning Concepts</h3>
+                    <pre><code>Explain [concept] to me.
+
+Include:
+- Simple definition
+- Real-world analogy
+- Code example
+- When to use it
+- Common mistakes to avoid</code></pre>
+
+                    <hr>
+
+                    <h2>Prompt Modifiers</h2>
+
+                    <h3>Skill Level</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Modifier</th>
+                                <th>When to use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>"for a beginner"</td><td>Learning basics</td></tr>
+                            <tr><td>"for an intermediate"</td><td>Know basics, learning advanced</td></tr>
+                            <tr><td>"for an expert"</td><td>Deep technical explanations</td></tr>
+                            <tr><td>"like I'm 5"</td><td>Very simplified</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Output Format</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Modifier</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>"step by step"</td><td>Sequential instructions</td></tr>
+                            <tr><td>"as bullet points"</td><td>List format</td></tr>
+                            <tr><td>"with examples"</td><td>Include code samples</td></tr>
+                            <tr><td>"briefly"</td><td>Concise response</td></tr>
+                            <tr><td>"in detail"</td><td>Comprehensive response</td></tr>
+                            <tr><td>"as a table"</td><td>Tabular format</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Constraints</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Modifier</th>
+                                <th>Effect</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>"without using X"</td><td>Avoid specific methods</td></tr>
+                            <tr><td>"using only vanilla JS"</td><td>No frameworks/libraries</td></tr>
+                            <tr><td>"compatible with ES5"</td><td>Version constraints</td></tr>
+                            <tr><td>"following best practices"</td><td>Quality code</td></tr>
+                            <tr><td>"optimized for performance"</td><td>Efficient code</td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2>Role Prompting</h2>
+
+                    <h3>Senior Developer</h3>
+                    <pre><code>Act as a senior [language] developer. 
+Review my code and suggest improvements 
+following industry best practices.</code></pre>
+
+                    <h3>Teacher</h3>
+                    <pre><code>Act as a programming teacher. 
+Explain [concept] as if I'm learning it 
+for the first time. Include practice exercises.</code></pre>
+
+                    <h3>Code Reviewer</h3>
+                    <pre><code>Act as a code reviewer on my team. 
+Look for bugs, security issues, and 
+improvements in this pull request.</code></pre>
+
+                    <h3>Debugger</h3>
+                    <pre><code>Act as a debugging expert. 
+Help me find why this code isn't working 
+and explain your reasoning process.</code></pre>
+
+                    <hr>
+
+                    <h2>Few-Shot Prompting</h2>
+                    <p>Give examples before your request:</p>
+                    <pre><code>Convert function names to descriptive comments:
+
+getUserData → // Retrieves user data from database
+calculateTotal → // Calculates the total price of items
+validateEmail → ?</code></pre>
+
+                    <hr>
+
+                    <h2>Chain of Thought</h2>
+                    <p>Ask for reasoning:</p>
+                    <pre><code>Think through this step by step:
+
+1. What does this code do?
+2. What could go wrong?
+3. How can we improve it?
+
+Then provide the improved code.
+
+[paste code]</code></pre>
+
+                    <hr>
+
+                    <h2>Common Prompts Library</h2>
+
+                    <h3>Function Generation</h3>
+                    <pre><code>Write a [language] function called [name] 
+that [does what]. It should accept [parameters] 
+and return [return type].</code></pre>
+
+                    <h3>Error Fixing</h3>
+                    <pre><code>This code gives me "[error message]". 
+What's wrong and how do I fix it?
+[code]</code></pre>
+
+                    <h3>Refactoring</h3>
+                    <pre><code>Refactor this code to be more readable 
+and follow [language] best practices.
+[code]</code></pre>
+
+                    <h3>Adding Features</h3>
+                    <pre><code>Add [feature] to this existing code. 
+Keep the current functionality intact.
+[code]</code></pre>
+
+                    <h3>Writing Tests</h3>
+                    <pre><code>Write unit tests for this function using [test framework].
+Cover edge cases and typical scenarios.
+[code]</code></pre>
+
+                    <h3>Documentation</h3>
+                    <pre><code>Write documentation comments for this [type].
+Include parameters, return values, and examples.
+[code]</code></pre>
+
+                    <h3>Converting Code</h3>
+                    <pre><code>Convert this [language1] code to [language2].
+Maintain the same functionality.
+[code]</code></pre>
+
+                    <hr>
+
+                    <h2>Iteration Prompts</h2>
+
+                    <h3>Refine Output</h3>
+                    <pre><code>Make it [simpler/shorter/more detailed]</code></pre>
+
+                    <h3>Add Features</h3>
+                    <pre><code>Also add [feature] to the code above</code></pre>
+
+                    <h3>Change Approach</h3>
+                    <pre><code>Try a different approach using [method]</code></pre>
+
+                    <h3>Fix Issues</h3>
+                    <pre><code>This still doesn't work because [issue]. 
+Try again.</code></pre>
+
+                    <h3>Clarify</h3>
+                    <pre><code>Can you explain the [specific part] more?</code></pre>
+
+                    <hr>
+
+                    <h2>Things to Include</h2>
+
+                    <h3>For Better Code</h3>
+                    <ul>
+                        <li>Language and version</li>
+                        <li>Framework (if any)</li>
+                        <li>Existing code context</li>
+                        <li>Expected behavior</li>
+                        <li>Error messages (exact)</li>
+                        <li>What you've already tried</li>
+                    </ul>
+
+                    <h3>For Better Explanations</h3>
+                    <ul>
+                        <li>Your current understanding</li>
+                        <li>What specifically confuses you</li>
+                        <li>How you plan to use this knowledge</li>
+                        <li>Your skill level</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>Quick Tips</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Do ✅</th>
+                                <th>Don't ❌</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Be specific</td><td>Be vague</td></tr>
+                            <tr><td>Give context</td><td>Assume AI knows</td></tr>
+                            <tr><td>Ask follow-ups</td><td>Accept first answer</td></tr>
+                            <tr><td>Verify output</td><td>Blindly copy</td></tr>
+                            <tr><td>Provide examples</td><td>Use ambiguous terms</td></tr>
+                            <tr><td>Set constraints</td><td>Leave it open-ended</td></tr>
+                            <tr><td>Break down complex tasks</td><td>Ask everything at once</td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2>Example: Progressive Prompting</h2>
+
+                    <p><strong>Start broad:</strong></p>
+                    <pre><code>Help me create a form validation function</code></pre>
+
+                    <p><strong>Add specifics:</strong></p>
+                    <pre><code>Make it validate email, password (min 8 chars), 
+and confirm password fields</code></pre>
+
+                    <p><strong>Add constraints:</strong></p>
+                    <pre><code>Use vanilla JavaScript, return specific 
+error messages for each field</code></pre>
+
+                    <p><strong>Add format:</strong></p>
+                    <pre><code>Return an object with isValid boolean 
+and an errors array</code></pre>
+
+                    <hr>
+
+                    <p><em><a href="../index.html">Back to Main Index</a></em></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">💻</span>
+                    <span>SALIS Coding Course</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Sylenia/SALIS-Coding-Course" target="_blank" rel="noopener">
+                        <svg class="github-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SALIS High School Coding Course. Happy Coding! 🎉</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

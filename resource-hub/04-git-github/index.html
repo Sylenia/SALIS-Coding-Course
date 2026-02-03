@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git &amp; GitHub Documentation | SALIS Coding Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">💻</span>
+                <span>SALIS Coding</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Resources</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <section class="content-section">
+            <div class="container content-container">
+                <article class="markdown-content">
+                    <h1>🌿 Git &amp; GitHub - Version Control</h1>
+
+                    <h2>What is Git?</h2>
+                    <p>Git is a distributed version control system that tracks changes in your code. It allows multiple developers to work on the same project, maintains a history of all changes, and enables reverting to previous versions.</p>
+
+                    <h2>What is GitHub?</h2>
+                    <p>GitHub is a web-based platform that hosts Git repositories. It provides collaboration features like pull requests, issues, and project management tools.</p>
+
+                    <p><strong>Cheat Sheet:</strong> <a href="cheatsheet.html">Git Commands Cheat Sheet</a></p>
+
+                    <hr>
+
+                    <h2>📚 Table of Contents</h2>
+                    <ol>
+                        <li><a href="#introduction-to-version-control">Introduction to Version Control</a></li>
+                        <li><a href="#installing-git">Installing Git</a></li>
+                        <li><a href="#basic-git-concepts">Basic Git Concepts</a></li>
+                        <li><a href="#essential-git-commands">Essential Git Commands</a></li>
+                        <li><a href="#branching-and-merging">Branching and Merging</a></li>
+                        <li><a href="#working-with-github">Working with GitHub</a></li>
+                        <li><a href="#collaboration-workflow">Collaboration Workflow</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ol>
+
+                    <hr>
+
+                    <h2 id="introduction-to-version-control">Introduction to Version Control</h2>
+
+                    <h3>Why Use Version Control?</h3>
+                    <ol>
+                        <li><strong>Track Changes</strong>: See what changed, when, and by whom</li>
+                        <li><strong>Collaboration</strong>: Multiple people can work on the same project</li>
+                        <li><strong>Backup</strong>: Your code is stored safely in the cloud</li>
+                        <li><strong>Experimentation</strong>: Try new features without breaking the main code</li>
+                        <li><strong>History</strong>: Revert to any previous version</li>
+                    </ol>
+
+                    <h3>Git vs GitHub</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Git</th>
+                                <th>GitHub</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Software (runs on your computer)</td><td>Website/service (in the cloud)</td></tr>
+                            <tr><td>Tracks changes locally</td><td>Hosts your repositories online</td></tr>
+                            <tr><td>Works offline</td><td>Requires internet</td></tr>
+                            <tr><td>Free and open-source</td><td>Free tier + paid plans</td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2 id="installing-git">Installing Git</h2>
+
+                    <h3>macOS</h3>
+                    <pre><code class="language-bash"># Using Homebrew (recommended)
+brew install git
+
+# Or download from
+# https://git-scm.com/download/mac</code></pre>
+
+                    <h3>Windows</h3>
+                    <p>Download from <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com</a> and run the installer.</p>
+                    <p>Or use <a href="https://gitforwindows.org/" target="_blank" rel="noopener">Git for Windows</a> which includes Git Bash.</p>
+
+                    <h3>Linux (Ubuntu/Debian)</h3>
+                    <pre><code class="language-bash">sudo apt update
+sudo apt install git</code></pre>
+
+                    <h3>Verify Installation</h3>
+                    <pre><code class="language-bash">git --version
+# Should show something like: git version 2.40.0</code></pre>
+
+                    <h3>Initial Configuration</h3>
+                    <pre><code class="language-bash"># Set your name
+git config --global user.name "Your Name"
+
+# Set your email (use the same email as GitHub)
+git config --global user.email "your.email@example.com"
+
+# Set default branch name
+git config --global init.defaultBranch main
+
+# Optional: Set default editor
+git config --global core.editor "code --wait"
+
+# View your configuration
+git config --list</code></pre>
+
+                    <hr>
+
+                    <h2 id="basic-git-concepts">Basic Git Concepts</h2>
+
+                    <h3>Repository (Repo)</h3>
+                    <p>A repository is a folder tracked by Git. It contains your project files and a hidden <code>.git</code> folder that stores the version history.</p>
+
+                    <h3>The Three States</h3>
+                    <pre><code>┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Working   │    │   Staging   │    │    Local    │
+│  Directory  │ -> │    Area     │ -> │  Repository │
+└─────────────┘    └─────────────┘    └─────────────┘
+      │                  │                   │
+   git add           git commit          git push
+      │                  │                   │
+      ▼                  ▼                   ▼
+ Your changes      Ready to commit     Saved in history</code></pre>
+                    <ol>
+                        <li><strong>Working Directory</strong>: Where you make changes to files</li>
+                        <li><strong>Staging Area</strong>: Where you prepare changes for commit</li>
+                        <li><strong>Repository</strong>: Where your committed history is stored</li>
+                    </ol>
+
+                    <h3>Commits</h3>
+                    <p>A commit is a snapshot of your project at a specific point in time. Each commit has:</p>
+                    <ul>
+                        <li>A unique ID (hash)</li>
+                        <li>Author information</li>
+                        <li>Date and time</li>
+                        <li>Commit message</li>
+                        <li>Reference to parent commit(s)</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2 id="essential-git-commands">Essential Git Commands</h2>
+
+                    <h3>Creating a Repository</h3>
+                    <pre><code class="language-bash"># Initialize a new Git repository
+git init
+
+# Clone an existing repository
+git clone https://github.com/username/repo.git
+
+# Clone into a specific folder
+git clone https://github.com/username/repo.git my-folder</code></pre>
+
+                    <h3>Checking Status</h3>
+                    <pre><code class="language-bash"># See the status of your files
+git status
+
+# Short status
+git status -s</code></pre>
+
+                    <h3>Staging Changes</h3>
+                    <pre><code class="language-bash"># Stage a specific file
+git add filename.txt
+
+# Stage multiple files
+git add file1.txt file2.txt
+
+# Stage all changes
+git add .
+
+# Stage all changes (including deletions)
+git add -A
+
+# Unstage a file
+git restore --staged filename.txt</code></pre>
+
+                    <h3>Committing Changes</h3>
+                    <pre><code class="language-bash"># Commit with a message
+git commit -m "Add new feature"
+
+# Commit with detailed message (opens editor)
+git commit
+
+# Stage and commit in one step (tracked files only)
+git commit -am "Update existing files"
+
+# Amend the last commit
+git commit --amend</code></pre>
+
+                    <h3>Viewing History</h3>
+                    <pre><code class="language-bash"># View commit history
+git log
+
+# Compact log
+git log --oneline
+
+# Log with graph
+git log --oneline --graph --all
+
+# Show specific commit
+git show commit-hash
+
+# Show changes in a commit
+git diff commit-hash</code></pre>
+
+                    <h3>Undoing Changes</h3>
+                    <pre><code class="language-bash"># Discard changes in working directory
+git restore filename.txt
+
+# Discard all changes
+git restore .
+
+# Unstage a file
+git restore --staged filename.txt
+
+# Revert a commit (creates new commit)
+git revert commit-hash
+
+# Reset to a previous commit (careful!)
+git reset --soft HEAD~1   # Keep changes staged
+git reset --mixed HEAD~1  # Keep changes unstaged
+git reset --hard HEAD~1   # Discard changes (dangerous!)</code></pre>
+
+                    <hr>
+
+                    <h2 id="branching-and-merging">Branching and Merging</h2>
+
+                    <h3>What is a Branch?</h3>
+                    <p>A branch is an independent line of development. The default branch is usually called <code>main</code> (or <code>master</code> in older projects).</p>
+                    <pre><code>        feature
+         ┌────●────●
+        /
+●────●────●────●  main
+              \
+               └────●  bugfix</code></pre>
+
+                    <h3>Branch Commands</h3>
+                    <pre><code class="language-bash"># List all branches
+git branch
+
+# Create a new branch
+git branch feature-name
+
+# Switch to a branch
+git checkout feature-name
+# Or (Git 2.23+)
+git switch feature-name
+
+# Create and switch in one step
+git checkout -b feature-name
+# Or
+git switch -c feature-name
+
+# Delete a branch
+git branch -d feature-name
+
+# Force delete (unmerged branch)
+git branch -D feature-name
+
+# Rename current branch
+git branch -m new-name</code></pre>
+
+                    <h3>Merging</h3>
+                    <pre><code class="language-bash"># Merge a branch into current branch
+git merge feature-name
+
+# Example workflow:
+git checkout main
+git merge feature-name</code></pre>
+
+                    <h3>Handling Merge Conflicts</h3>
+                    <p>When Git can't automatically merge, you'll see conflict markers:</p>
+                    <pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Your changes
+=======
+Their changes
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature-branch</code></pre>
+                    <p>Steps to resolve:</p>
+                    <ol>
+                        <li>Open the conflicted file</li>
+                        <li>Edit to keep the correct code</li>
+                        <li>Remove the conflict markers</li>
+                        <li>Stage the file: <code>git add filename</code></li>
+                        <li>Complete the merge: <code>git commit</code></li>
+                    </ol>
+
+                    <hr>
+
+                    <h2 id="working-with-github">Working with GitHub</h2>
+
+                    <h3>Creating a Repository on GitHub</h3>
+                    <ol>
+                        <li>Go to <a href="https://github.com" target="_blank" rel="noopener">github.com</a></li>
+                        <li>Click the <strong>+</strong> icon → <strong>New repository</strong></li>
+                        <li>Fill in repository name and description</li>
+                        <li>Choose public or private</li>
+                        <li>Click <strong>Create repository</strong></li>
+                    </ol>
+
+                    <h3>Connecting Local to Remote</h3>
+                    <pre><code class="language-bash"># Add a remote repository
+git remote add origin https://github.com/username/repo.git
+
+# View remotes
+git remote -v
+
+# Change remote URL
+git remote set-url origin https://github.com/username/new-repo.git</code></pre>
+
+                    <h3>Pushing and Pulling</h3>
+                    <pre><code class="language-bash"># Push to remote
+git push origin main
+
+# Push and set upstream (first time)
+git push -u origin main
+
+# After setting upstream
+git push
+
+# Pull changes from remote
+git pull origin main
+
+# Fetch without merging
+git fetch origin
+
+# Pull with rebase
+git pull --rebase origin main</code></pre>
+
+                    <h3>SSH vs HTTPS</h3>
+                    <p><strong>HTTPS</strong> (easier to set up):</p>
+                    <pre><code class="language-bash">git clone https://github.com/username/repo.git</code></pre>
+                    <p><strong>SSH</strong> (more secure, no password each time):</p>
+                    <pre><code class="language-bash"># Generate SSH key
+ssh-keygen -t ed25519 -C "your.email@example.com"
+
+# Add to SSH agent
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+# Copy public key
+cat ~/.ssh/id_ed25519.pub
+# Add to GitHub Settings → SSH Keys
+
+# Clone with SSH
+git clone git@github.com:username/repo.git</code></pre>
+
+                    <hr>
+
+                    <h2 id="collaboration-workflow">Collaboration Workflow</h2>
+
+                    <h3>Fork and Pull Request Workflow</h3>
+                    <ol>
+                        <li><strong>Fork</strong> the repository on GitHub</li>
+                        <li><strong>Clone</strong> your fork locally</li>
+                        <li><strong>Create a branch</strong> for your changes</li>
+                        <li><strong>Make changes</strong> and commit</li>
+                        <li><strong>Push</strong> to your fork</li>
+                        <li>Create a <strong>Pull Request</strong> on GitHub</li>
+                    </ol>
+                    <pre><code class="language-bash"># 1. Clone your fork
+git clone https://github.com/your-username/repo.git
+
+# 2. Add upstream remote
+git remote add upstream https://github.com/original-owner/repo.git
+
+# 3. Create a feature branch
+git checkout -b my-feature
+
+# 4. Make changes and commit
+git add .
+git commit -m "Add my feature"
+
+# 5. Push to your fork
+git push origin my-feature
+
+# 6. Keep your fork updated
+git fetch upstream
+git checkout main
+git merge upstream/main
+git push origin main</code></pre>
+
+                    <h3>Pull Requests (PRs)</h3>
+                    <p>A Pull Request is a way to propose changes:</p>
+                    <ol>
+                        <li>Go to the repository on GitHub</li>
+                        <li>Click <strong>Pull requests</strong> → <strong>New pull request</strong></li>
+                        <li>Select your branch</li>
+                        <li>Add a title and description</li>
+                        <li>Click <strong>Create pull request</strong></li>
+                        <li>Wait for review and approval</li>
+                        <li>Merge when approved</li>
+                    </ol>
+
+                    <h3>Code Reviews</h3>
+                    <ul>
+                        <li>Review others' pull requests</li>
+                        <li>Leave constructive comments</li>
+                        <li>Approve or request changes</li>
+                        <li>Use GitHub's review features</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2 id="best-practices">Best Practices</h2>
+
+                    <h3>✅ Do's</h3>
+                    <ol>
+                        <li><strong>Commit often</strong> with small, focused changes</li>
+                        <li><strong>Write clear commit messages</strong></li>
+                        <li><strong>Pull before you push</strong></li>
+                        <li><strong>Use branches</strong> for features and fixes</li>
+                        <li><strong>Review your changes</strong> before committing</li>
+                        <li><strong>Keep the main branch stable</strong></li>
+                    </ol>
+
+                    <h3>❌ Don'ts</h3>
+                    <ol>
+                        <li><strong>Don't commit sensitive data</strong> (passwords, API keys)</li>
+                        <li><strong>Don't commit generated files</strong> (use .gitignore)</li>
+                        <li><strong>Don't force push</strong> to shared branches</li>
+                        <li><strong>Don't make huge commits</strong></li>
+                        <li><strong>Don't commit broken code</strong> to main</li>
+                    </ol>
+
+                    <h3>Writing Good Commit Messages</h3>
+                    <pre><code># Good examples
+git commit -m "Add user authentication feature"
+git commit -m "Fix navigation menu on mobile"
+git commit -m "Update README with installation instructions"
+
+# Bad examples
+git commit -m "fix"
+git commit -m "asdfasdf"
+git commit -m "stuff"</code></pre>
+
+                    <h3>Using .gitignore</h3>
+                    <p>Create a <code>.gitignore</code> file to exclude files from Git:</p>
+                    <pre><code class="language-gitignore"># Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/</code></pre>
+
+                    <hr>
+
+                    <h2 id="resources">🔗 Resources</h2>
+
+                    <h3>Official Documentation</h3>
+                    <ul>
+                        <li><a href="https://git-scm.com/doc" target="_blank" rel="noopener">Git Documentation</a> - Official Git reference</li>
+                        <li><a href="https://docs.github.com/" target="_blank" rel="noopener">GitHub Docs</a> - GitHub's official documentation</li>
+                        <li><a href="https://git-scm.com/book/en/v2" target="_blank" rel="noopener">Pro Git Book</a> - Free comprehensive Git book</li>
+                    </ul>
+
+                    <h3>Interactive Learning</h3>
+                    <ul>
+                        <li><a href="https://learngitbranching.js.org/" target="_blank" rel="noopener">Learn Git Branching</a> - Visual/interactive Git tutorial</li>
+                        <li><a href="https://skills.github.com/" target="_blank" rel="noopener">GitHub Skills</a> - GitHub's learning courses</li>
+                        <li><a href="https://www.codecademy.com/learn/learn-git" target="_blank" rel="noopener">Codecademy Git Course</a> - Interactive Git lessons</li>
+                    </ul>
+
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="https://desktop.github.com/" target="_blank" rel="noopener">GitHub Desktop</a> - GUI for Git</li>
+                        <li><a href="https://www.gitkraken.com/" target="_blank" rel="noopener">GitKraken</a> - Popular Git GUI</li>
+                        <li><a href="https://code.visualstudio.com/docs/editor/versioncontrol" target="_blank" rel="noopener">VS Code Git Integration</a> - Built-in Git features</li>
+                    </ul>
+
+                    <h3>Reference</h3>
+                    <ul>
+                        <li><a href="https://education.github.com/git-cheat-sheet-education.pdf" target="_blank" rel="noopener">Git Cheat Sheet (GitHub)</a> - PDF cheat sheet</li>
+                        <li><a href="https://www.conventionalcommits.org/" target="_blank" rel="noopener">Conventional Commits</a> - Commit message standard</li>
+                        <li><a href="https://www.toptal.com/developers/gitignore" target="_blank" rel="noopener">gitignore.io</a> - Generate .gitignore files</li>
+                    </ul>
+
+                    <h3>Video Tutorials</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=SWYqp7iY_Tc" target="_blank" rel="noopener">Git &amp; GitHub Crash Course (Traversy Media)</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=8JJ101D3knE" target="_blank" rel="noopener">Git Tutorial for Beginners (Programming with Mosh)</a></li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>📝 Exercises</h2>
+
+                    <h3>Exercise 1: First Repository</h3>
+                    <ol>
+                        <li>Create a new folder and initialize Git</li>
+                        <li>Create a file called <code>README.md</code></li>
+                        <li>Stage and commit the file</li>
+                        <li>Create a GitHub repository</li>
+                        <li>Push your local repo to GitHub</li>
+                    </ol>
+
+                    <h3>Exercise 2: Branching Practice</h3>
+                    <ol>
+                        <li>Create a new branch called <code>feature-test</code></li>
+                        <li>Make some changes and commit</li>
+                        <li>Switch back to main</li>
+                        <li>Merge the feature branch</li>
+                    </ol>
+
+                    <h3>Exercise 3: Collaboration</h3>
+                    <ol>
+                        <li>Fork a classmate's repository</li>
+                        <li>Clone your fork</li>
+                        <li>Make a change</li>
+                        <li>Push and create a pull request</li>
+                    </ol>
+
+                    <hr>
+
+                    <p><em>Previous: <a href="../03-javascript/index.html">JavaScript Documentation</a> | Next: <a href="../05-nodejs-npm/index.html">Node.js &amp; npm Documentation</a></em></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">💻</span>
+                    <span>SALIS Coding Course</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Sylenia/SALIS-Coding-Course" target="_blank" rel="noopener">
+                        <svg class="github-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SALIS High School Coding Course. Happy Coding! 🎉</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Documentation | SALIS Coding Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">💻</span>
+                <span>SALIS Coding</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Resources</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <section class="content-section">
+            <div class="container content-container">
+                <article class="markdown-content">
+                    <h1>🎨 CSS - Cascading Style Sheets</h1>
+
+                    <h2>What is CSS?</h2>
+                    <p>CSS (Cascading Style Sheets) is a stylesheet language used to describe the presentation of HTML documents. It controls colors, fonts, layouts, and the overall visual appearance of web pages.</p>
+
+                    <p><strong>Cheat Sheet:</strong> <a href="cheatsheet.html">CSS Cheat Sheet</a></p>
+
+                    <hr>
+
+                    <h2>📚 Table of Contents</h2>
+                    <ol>
+                        <li><a href="#introduction-to-css">Introduction to CSS</a></li>
+                        <li><a href="#css-syntax-and-selectors">CSS Syntax and Selectors</a></li>
+                        <li><a href="#colors-and-typography">Colors and Typography</a></li>
+                        <li><a href="#the-box-model">The Box Model</a></li>
+                        <li><a href="#layout-techniques">Layout Techniques</a></li>
+                        <li><a href="#responsive-design">Responsive Design</a></li>
+                        <li><a href="#css-variables">CSS Variables</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ol>
+
+                    <hr>
+
+                    <h2 id="introduction-to-css">Introduction to CSS</h2>
+
+                    <h3>Three Ways to Add CSS</h3>
+
+                    <h4>1. External Stylesheet (Recommended)</h4>
+                    <pre><code class="language-html">&lt;head&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+
+                    <h4>2. Internal Stylesheet</h4>
+                    <pre><code class="language-html">&lt;head&gt;
+    &lt;style&gt;
+        body {
+            background-color: white;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+                    <h4>3. Inline Styles (Avoid)</h4>
+                    <pre><code class="language-html">&lt;p style="color: blue;"&gt;Blue text&lt;/p&gt;</code></pre>
+
+                    <hr>
+
+                    <h2 id="css-syntax-and-selectors">CSS Syntax and Selectors</h2>
+
+                    <h3>Basic Syntax</h3>
+                    <pre><code class="language-css">selector {
+    property: value;
+    another-property: value;
+}</code></pre>
+
+                    <h3>Types of Selectors</h3>
+
+                    <h4>Element Selector</h4>
+                    <pre><code class="language-css">p {
+    color: blue;
+}</code></pre>
+
+                    <h4>Class Selector</h4>
+                    <pre><code class="language-css">.highlight {
+    background-color: yellow;
+}</code></pre>
+
+                    <h4>ID Selector</h4>
+                    <pre><code class="language-css">#header {
+    font-size: 24px;
+}</code></pre>
+
+                    <h4>Universal Selector</h4>
+                    <pre><code class="language-css">* {
+    margin: 0;
+    padding: 0;
+}</code></pre>
+
+                    <h4>Attribute Selector</h4>
+                    <pre><code class="language-css">input[type="text"] {
+    border: 1px solid gray;
+}</code></pre>
+
+                    <h3>Combinators</h3>
+                    <pre><code class="language-css">/* Descendant (any level) */
+article p {
+    line-height: 1.6;
+}
+
+/* Child (direct) */
+ul &gt; li {
+    list-style: none;
+}
+
+/* Adjacent sibling */
+h1 + p {
+    font-size: 1.2em;
+}
+
+/* General sibling */
+h1 ~ p {
+    color: gray;
+}</code></pre>
+
+                    <h3>Pseudo-classes</h3>
+                    <pre><code class="language-css">/* Link states */
+a:link { color: blue; }
+a:visited { color: purple; }
+a:hover { color: red; }
+a:active { color: orange; }
+
+/* Form states */
+input:focus { border-color: blue; }
+input:disabled { opacity: 0.5; }
+input:checked { accent-color: green; }
+
+/* Structural */
+li:first-child { font-weight: bold; }
+li:last-child { border-bottom: none; }
+li:nth-child(odd) { background: #f0f0f0; }
+li:nth-child(3n) { color: red; }
+
+/* Other */
+p:empty { display: none; }
+:not(.special) { opacity: 0.8; }</code></pre>
+
+                    <h3>Pseudo-elements</h3>
+                    <pre><code class="language-css">/* First letter/line */
+p::first-letter {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+p::first-line {
+    font-style: italic;
+}
+
+/* Before/After content */
+.quote::before {
+    content: '"';
+}
+
+.quote::after {
+    content: '"';
+}
+
+/* Selection */
+::selection {
+    background: yellow;
+    color: black;
+}
+
+/* Placeholder */
+input::placeholder {
+    color: gray;
+}</code></pre>
+
+                    <h3>Specificity</h3>
+                    <p>From lowest to highest:</p>
+                    <ol>
+                        <li>Element selectors (<code>p</code>, <code>div</code>)</li>
+                        <li>Class selectors (<code>.class</code>)</li>
+                        <li>ID selectors (<code>#id</code>)</li>
+                        <li>Inline styles</li>
+                        <li><code>!important</code> (avoid using)</li>
+                    </ol>
+
+                    <pre><code class="language-css">/* Specificity: 0-0-1 */
+p { color: blue; }
+
+/* Specificity: 0-1-0 */
+.text { color: green; }
+
+/* Specificity: 1-0-0 */
+#main { color: red; }</code></pre>
+
+                    <hr>
+
+                    <h2 id="colors-and-typography">Colors and Typography</h2>
+
+                    <h3>Color Values</h3>
+                    <pre><code class="language-css">/* Named colors */
+color: red;
+color: blue;
+
+/* Hexadecimal */
+color: #ff0000;
+color: #f00;     /* shorthand */
+
+/* RGB */
+color: rgb(255, 0, 0);
+
+/* RGBA (with transparency) */
+color: rgba(255, 0, 0, 0.5);
+
+/* HSL */
+color: hsl(0, 100%, 50%);
+
+/* HSLA */
+color: hsla(0, 100%, 50%, 0.5);</code></pre>
+
+                    <h3>Typography</h3>
+                    <pre><code class="language-css">/* Font family */
+font-family: Arial, Helvetica, sans-serif;
+font-family: 'Times New Roman', serif;
+font-family: 'Courier New', monospace;
+
+/* Font size */
+font-size: 16px;
+font-size: 1rem;
+font-size: 1.5em;
+
+/* Font weight */
+font-weight: normal;    /* 400 */
+font-weight: bold;      /* 700 */
+font-weight: 300;
+
+/* Font style */
+font-style: italic;
+font-style: normal;
+
+/* Line height */
+line-height: 1.6;
+line-height: 24px;
+
+/* Text alignment */
+text-align: left;
+text-align: center;
+text-align: right;
+text-align: justify;
+
+/* Text decoration */
+text-decoration: none;
+text-decoration: underline;
+text-decoration: line-through;
+
+/* Text transform */
+text-transform: uppercase;
+text-transform: lowercase;
+text-transform: capitalize;
+
+/* Letter/word spacing */
+letter-spacing: 2px;
+word-spacing: 4px;</code></pre>
+
+                    <h3>Google Fonts</h3>
+                    <pre><code class="language-html">&lt;!-- Add to HTML &lt;head&gt; --&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"&gt;</code></pre>
+                    <pre><code class="language-css">body {
+    font-family: 'Roboto', sans-serif;
+}</code></pre>
+
+                    <hr>
+
+                    <h2 id="the-box-model">The Box Model</h2>
+                    <p>Every HTML element is a box with four parts:</p>
+                    <pre><code>┌─────────────────────────────────┐
+│            MARGIN               │
+│  ┌───────────────────────────┐  │
+│  │         BORDER            │  │
+│  │  ┌─────────────────────┐  │  │
+│  │  │      PADDING        │  │  │
+│  │  │  ┌───────────────┐  │  │  │
+│  │  │  │    CONTENT    │  │  │  │
+│  │  │  └───────────────┘  │  │  │
+│  │  └─────────────────────┘  │  │
+│  └───────────────────────────┘  │
+└─────────────────────────────────┘</code></pre>
+
+                    <h3>Box Model Properties</h3>
+                    <pre><code class="language-css">.box {
+    /* Content dimensions */
+    width: 200px;
+    height: 100px;
+    
+    /* Padding (inside) */
+    padding: 20px;
+    padding: 10px 20px;           /* vertical horizontal */
+    padding: 10px 20px 15px 25px; /* top right bottom left */
+    
+    /* Border */
+    border: 1px solid black;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #333;
+    border-radius: 8px;
+    
+    /* Margin (outside) */
+    margin: 20px;
+    margin: 0 auto;  /* center horizontally */
+}</code></pre>
+
+                    <h3>Box Sizing</h3>
+                    <pre><code class="language-css">/* Include padding and border in width/height */
+* {
+    box-sizing: border-box;
+}</code></pre>
+
+                    <hr>
+
+                    <h2 id="layout-techniques">Layout Techniques</h2>
+
+                    <h3>Display Property</h3>
+                    <pre><code class="language-css">display: block;        /* Full width, new line */
+display: inline;       /* Width of content, same line */
+display: inline-block; /* Inline with block properties */
+display: none;         /* Hidden, removed from flow */
+display: flex;         /* Flexbox container */
+display: grid;         /* Grid container */</code></pre>
+
+                    <h3>Flexbox</h3>
+                    <p>Flexbox is ideal for one-dimensional layouts (row OR column).</p>
+                    <pre><code class="language-css">.container {
+    display: flex;
+    
+    /* Direction */
+    flex-direction: row;          /* default */
+    flex-direction: column;
+    flex-direction: row-reverse;
+    
+    /* Main axis alignment */
+    justify-content: flex-start;  /* default */
+    justify-content: center;
+    justify-content: flex-end;
+    justify-content: space-between;
+    justify-content: space-around;
+    justify-content: space-evenly;
+    
+    /* Cross axis alignment */
+    align-items: stretch;         /* default */
+    align-items: flex-start;
+    align-items: center;
+    align-items: flex-end;
+    
+    /* Wrapping */
+    flex-wrap: nowrap;            /* default */
+    flex-wrap: wrap;
+    
+    /* Gap between items */
+    gap: 20px;
+}
+
+.item {
+    flex: 1;           /* Grow equally */
+    flex-grow: 1;      /* Grow factor */
+    flex-shrink: 0;    /* Don't shrink */
+    flex-basis: 200px; /* Base width */
+    order: 2;          /* Change order */
+}</code></pre>
+
+                    <h3>CSS Grid</h3>
+                    <p>Grid is ideal for two-dimensional layouts (rows AND columns).</p>
+                    <pre><code class="language-css">.container {
+    display: grid;
+    
+    /* Define columns */
+    grid-template-columns: 200px 200px 200px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    
+    /* Define rows */
+    grid-template-rows: 100px auto 100px;
+    
+    /* Gap */
+    gap: 20px;
+    row-gap: 10px;
+    column-gap: 20px;
+    
+    /* Alignment */
+    justify-items: center;
+    align-items: center;
+}
+
+.item {
+    /* Span multiple columns/rows */
+    grid-column: span 2;
+    grid-row: span 2;
+    
+    /* Position */
+    grid-column: 1 / 3;
+    grid-row: 2 / 4;
+}</code></pre>
+
+                    <h3>Position</h3>
+                    <pre><code class="language-css">/* Static (default) */
+position: static;
+
+/* Relative (offset from normal position) */
+position: relative;
+top: 10px;
+left: 20px;
+
+/* Absolute (relative to positioned ancestor) */
+position: absolute;
+top: 0;
+right: 0;
+
+/* Fixed (relative to viewport) */
+position: fixed;
+bottom: 20px;
+right: 20px;
+
+/* Sticky (switches between relative and fixed) */
+position: sticky;
+top: 0;</code></pre>
+
+                    <hr>
+
+                    <h2 id="responsive-design">Responsive Design</h2>
+
+                    <h3>Media Queries</h3>
+                    <pre><code class="language-css">/* Mobile first approach */
+.container {
+    width: 100%;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .container {
+        width: 960px;
+    }
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+    .container {
+        width: 1140px;
+    }
+}</code></pre>
+
+                    <h3>Common Breakpoints</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Device</th>
+                                <th>Breakpoint</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Mobile</td><td>&lt; 768px</td></tr>
+                            <tr><td>Tablet</td><td>768px - 1023px</td></tr>
+                            <tr><td>Desktop</td><td>1024px - 1199px</td></tr>
+                            <tr><td>Large Desktop</td><td>≥ 1200px</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Responsive Units</h3>
+                    <pre><code class="language-css">/* Relative to root font-size */
+font-size: 1rem;
+
+/* Relative to parent font-size */
+font-size: 1.5em;
+
+/* Percentage of parent */
+width: 50%;
+
+/* Viewport width/height */
+width: 100vw;
+height: 100vh;
+
+/* Min/max viewport */
+font-size: min(5vw, 2rem);
+font-size: clamp(1rem, 2vw, 2rem);</code></pre>
+
+                    <hr>
+
+                    <h2 id="css-variables">CSS Variables</h2>
+                    <p>Custom properties (CSS Variables) allow reusable values.</p>
+                    <pre><code class="language-css">:root {
+    /* Define variables */
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --spacing-unit: 8px;
+    --border-radius: 4px;
+}
+
+.button {
+    /* Use variables */
+    background-color: var(--primary-color);
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: var(--border-radius);
+}
+
+/* Override in specific context */
+.dark-theme {
+    --primary-color: #0056b3;
+}</code></pre>
+
+                    <hr>
+
+                    <h2 id="best-practices">Best Practices</h2>
+
+                    <h3>✅ Do's</h3>
+                    <ol>
+                        <li><strong>Use external stylesheets</strong> for better organization</li>
+                        <li><strong>Use meaningful class names</strong> (<code>.nav-menu</code>, not <code>.nm</code>)</li>
+                        <li><strong>Use CSS variables</strong> for consistent values</li>
+                        <li><strong>Mobile-first approach</strong> for responsive design</li>
+                        <li><strong>Use Flexbox/Grid</strong> for layouts</li>
+                        <li><strong>Comment your code</strong> for complex sections</li>
+                        <li><strong>Use <code>box-sizing: border-box</code></strong> globally</li>
+                    </ol>
+
+                    <h3>❌ Don'ts</h3>
+                    <ol>
+                        <li><strong>Don't use inline styles</strong> (hard to maintain)</li>
+                        <li><strong>Don't use <code>!important</code></strong> unless necessary</li>
+                        <li><strong>Don't use IDs for styling</strong> (prefer classes)</li>
+                        <li><strong>Don't over-nest selectors</strong> (keep specificity low)</li>
+                        <li><strong>Don't use <code>px</code> for font sizes</strong> (use <code>rem</code>)</li>
+                    </ol>
+
+                    <h3>CSS Reset/Normalize</h3>
+                    <pre><code class="language-css">/* Simple reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}</code></pre>
+
+                    <hr>
+
+                    <h2 id="resources">🔗 Resources</h2>
+
+                    <h3>Official Documentation</h3>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener">MDN CSS Reference</a> - Comprehensive CSS documentation</li>
+                        <li><a href="https://www.w3schools.com/css/" target="_blank" rel="noopener">W3Schools CSS Tutorial</a> - Beginner-friendly tutorials</li>
+                        <li><a href="https://css-tricks.com/" target="_blank" rel="noopener">CSS-Tricks</a> - Tips, tricks, and techniques</li>
+                    </ul>
+
+                    <h3>Interactive Learning</h3>
+                    <ul>
+                        <li><a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/" target="_blank" rel="noopener">freeCodeCamp CSS Course</a> - Free interactive lessons</li>
+                        <li><a href="https://www.codecademy.com/learn/learn-css" target="_blank" rel="noopener">Codecademy CSS Course</a> - Structured learning</li>
+                        <li><a href="https://flexboxfroggy.com/" target="_blank" rel="noopener">Flexbox Froggy</a> - Learn Flexbox through a game</li>
+                        <li><a href="https://cssgridgarden.com/" target="_blank" rel="noopener">Grid Garden</a> - Learn CSS Grid through a game</li>
+                    </ul>
+
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="https://fonts.google.com/" target="_blank" rel="noopener">Google Fonts</a> - Free web fonts</li>
+                        <li><a href="https://cssgradient.io/" target="_blank" rel="noopener">CSS Gradient Generator</a> - Create gradients</li>
+                        <li><a href="https://coolors.co/" target="_blank" rel="noopener">Coolors</a> - Color palette generator</li>
+                        <li><a href="https://www.cssmatic.com/box-shadow" target="_blank" rel="noopener">Box Shadow Generator</a> - Create box shadows</li>
+                        <li><a href="https://autoprefixer.github.io/" target="_blank" rel="noopener">Autoprefixer</a> - Add vendor prefixes</li>
+                    </ul>
+
+                    <h3>Reference</h3>
+                    <ul>
+                        <li><a href="https://caniuse.com/" target="_blank" rel="noopener">Can I Use</a> - Browser compatibility</li>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank" rel="noopener">CSS Selectors Reference</a></li>
+                        <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">A Complete Guide to Flexbox</a></li>
+                        <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank" rel="noopener">A Complete Guide to Grid</a></li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>📝 Exercises</h2>
+
+                    <h3>Exercise 1: Style a Card</h3>
+                    <p>Create a styled card component with:</p>
+                    <ul>
+                        <li>Rounded corners</li>
+                        <li>Box shadow</li>
+                        <li>Padding</li>
+                        <li>Centered text</li>
+                        <li>Hover effect</li>
+                    </ul>
+
+                    <h3>Exercise 2: Navigation Bar</h3>
+                    <p>Create a horizontal navigation bar with:</p>
+                    <ul>
+                        <li>Flexbox layout</li>
+                        <li>Hover effects on links</li>
+                        <li>Fixed position at top</li>
+                    </ul>
+
+                    <h3>Exercise 3: Responsive Grid</h3>
+                    <p>Create a responsive photo gallery with:</p>
+                    <ul>
+                        <li>CSS Grid layout</li>
+                        <li>3 columns on desktop</li>
+                        <li>2 columns on tablet</li>
+                        <li>1 column on mobile</li>
+                    </ul>
+
+                    <hr>
+
+                    <p><em>Previous: <a href="../01-html/index.html">HTML Documentation</a> | Next: <a href="../03-javascript/index.html">JavaScript Documentation</a></em></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">💻</span>
+                    <span>SALIS Coding Course</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Sylenia/SALIS-Coding-Course" target="_blank" rel="noopener">
+                        <svg class="github-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SALIS High School Coding Course. Happy Coding! 🎉</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

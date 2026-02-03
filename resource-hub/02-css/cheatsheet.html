@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Cheat Sheet | SALIS Coding Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">💻</span>
+                <span>SALIS Coding</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Resources</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <section class="content-section">
+            <div class="container content-container">
+                <article class="markdown-content">
+                    <h1>📋 CSS Cheat Sheet</h1>
+                    <p>Quick reference guide for CSS properties and values.</p>
+
+                    <hr>
+
+                    <h2>Selectors</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Selector</th>
+                                <th>Example</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>*</code></td><td><code>* { }</code></td><td>All elements</td></tr>
+                            <tr><td><code>element</code></td><td><code>p { }</code></td><td>All <code>&lt;p&gt;</code> elements</td></tr>
+                            <tr><td><code>.class</code></td><td><code>.intro { }</code></td><td>Elements with class="intro"</td></tr>
+                            <tr><td><code>#id</code></td><td><code>#header { }</code></td><td>Element with id="header"</td></tr>
+                            <tr><td><code>element.class</code></td><td><code>p.intro { }</code></td><td><code>&lt;p&gt;</code> with class="intro"</td></tr>
+                            <tr><td><code>element, element</code></td><td><code>h1, h2 { }</code></td><td>Multiple elements</td></tr>
+                            <tr><td><code>element element</code></td><td><code>div p { }</code></td><td>Descendant</td></tr>
+                            <tr><td><code>element &gt; element</code></td><td><code>div &gt; p { }</code></td><td>Direct child</td></tr>
+                            <tr><td><code>element + element</code></td><td><code>h1 + p { }</code></td><td>Adjacent sibling</td></tr>
+                            <tr><td><code>element ~ element</code></td><td><code>h1 ~ p { }</code></td><td>General sibling</td></tr>
+                            <tr><td><code>[attr]</code></td><td><code>[disabled] { }</code></td><td>Has attribute</td></tr>
+                            <tr><td><code>[attr=value]</code></td><td><code>[type="text"] { }</code></td><td>Attribute equals</td></tr>
+                            <tr><td><code>:hover</code></td><td><code>a:hover { }</code></td><td>Mouse over</td></tr>
+                            <tr><td><code>:focus</code></td><td><code>input:focus { }</code></td><td>Has focus</td></tr>
+                            <tr><td><code>:first-child</code></td><td><code>li:first-child { }</code></td><td>First child</td></tr>
+                            <tr><td><code>:nth-child(n)</code></td><td><code>li:nth-child(2) { }</code></td><td>Nth child</td></tr>
+                            <tr><td><code>::before</code></td><td><code>p::before { }</code></td><td>Insert before</td></tr>
+                            <tr><td><code>::after</code></td><td><code>p::after { }</code></td><td>Insert after</td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2>Colors</h2>
+                    <pre><code class="language-css">/* Named */
+color: red;
+
+/* Hex */
+color: #ff0000;
+color: #f00;
+
+/* RGB */
+color: rgb(255, 0, 0);
+
+/* RGBA */
+color: rgba(255, 0, 0, 0.5);
+
+/* HSL */
+color: hsl(0, 100%, 50%);
+
+/* HSLA */
+color: hsla(0, 100%, 50%, 0.5);</code></pre>
+
+                    <hr>
+
+                    <h2>Typography</h2>
+                    <pre><code class="language-css">/* Font */
+font-family: Arial, sans-serif;
+font-size: 16px;
+font-weight: bold;       /* 100-900 */
+font-style: italic;
+
+/* Text */
+text-align: center;      /* left, right, justify */
+text-decoration: none;   /* underline, line-through */
+text-transform: uppercase; /* lowercase, capitalize */
+line-height: 1.6;
+letter-spacing: 2px;
+word-spacing: 4px;
+
+/* Shorthand */
+font: italic bold 16px/1.5 Arial, sans-serif;</code></pre>
+
+                    <hr>
+
+                    <h2>Box Model</h2>
+                    <pre><code class="language-css">/* Size */
+width: 200px;
+height: 100px;
+min-width: 100px;
+max-width: 500px;
+
+/* Padding */
+padding: 10px;           /* all sides */
+padding: 10px 20px;      /* vertical horizontal */
+padding: 10px 20px 15px; /* top horizontal bottom */
+padding: 10px 20px 15px 25px; /* top right bottom left */
+
+/* Margin */
+margin: 10px;
+margin: 0 auto;          /* center horizontally */
+
+/* Border */
+border: 1px solid black;
+border-radius: 8px;
+
+/* Box sizing */
+box-sizing: border-box;  /* include padding/border in width */</code></pre>
+
+                    <hr>
+
+                    <h2>Background</h2>
+                    <pre><code class="language-css">background-color: #fff;
+background-image: url('image.jpg');
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+background-attachment: fixed;
+
+/* Shorthand */
+background: #fff url('img.jpg') no-repeat center/cover;
+
+/* Gradient */
+background: linear-gradient(to right, #ff0000, #0000ff);
+background: radial-gradient(circle, #ff0000, #0000ff);</code></pre>
+
+                    <hr>
+
+                    <h2>Display &amp; Visibility</h2>
+                    <pre><code class="language-css">display: block;
+display: inline;
+display: inline-block;
+display: none;
+display: flex;
+display: grid;
+
+visibility: hidden;      /* hidden but takes space */
+opacity: 0.5;            /* transparency */</code></pre>
+
+                    <hr>
+
+                    <h2>Flexbox</h2>
+                    <pre><code class="language-css">/* Container */
+display: flex;
+flex-direction: row;     /* column, row-reverse, column-reverse */
+justify-content: center; /* flex-start, flex-end, space-between, space-around */
+align-items: center;     /* flex-start, flex-end, stretch */
+flex-wrap: wrap;
+gap: 10px;
+
+/* Items */
+flex: 1;                 /* grow shrink basis */
+flex-grow: 1;
+flex-shrink: 0;
+flex-basis: 200px;
+order: 1;
+align-self: flex-end;</code></pre>
+
+                    <hr>
+
+                    <h2>Grid</h2>
+                    <pre><code class="language-css">/* Container */
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+grid-template-rows: 100px auto;
+gap: 20px;
+justify-items: center;
+align-items: center;
+
+/* Items */
+grid-column: 1 / 3;      /* start / end */
+grid-column: span 2;
+grid-row: span 2;</code></pre>
+
+                    <hr>
+
+                    <h2>Position</h2>
+                    <pre><code class="language-css">position: static;        /* default */
+position: relative;      /* relative to normal position */
+position: absolute;      /* relative to positioned ancestor */
+position: fixed;         /* relative to viewport */
+position: sticky;        /* switches between relative and fixed */
+
+top: 10px;
+right: 10px;
+bottom: 10px;
+left: 10px;
+
+z-index: 100;            /* stack order */</code></pre>
+
+                    <hr>
+
+                    <h2>Overflow</h2>
+                    <pre><code class="language-css">overflow: visible;       /* default */
+overflow: hidden;        /* clip content */
+overflow: scroll;        /* always show scrollbars */
+overflow: auto;          /* show scrollbars if needed */
+overflow-x: scroll;
+overflow-y: hidden;</code></pre>
+
+                    <hr>
+
+                    <h2>Shadows</h2>
+                    <pre><code class="language-css">/* Box shadow */
+box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+/* x-offset y-offset blur spread color */
+box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+
+/* Text shadow */
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);</code></pre>
+
+                    <hr>
+
+                    <h2>Transitions &amp; Animations</h2>
+                    <pre><code class="language-css">/* Transitions */
+transition: all 0.3s ease;
+transition: background-color 0.3s ease-in-out;
+transition-property: all;
+transition-duration: 0.3s;
+transition-timing-function: ease;
+transition-delay: 0.1s;
+
+/* Transform */
+transform: translateX(50px);
+transform: translateY(-20px);
+transform: scale(1.5);
+transform: rotate(45deg);
+transform: skew(10deg);
+
+/* Animation */
+animation: slidein 1s ease-in-out infinite;
+
+@keyframes slidein {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}</code></pre>
+
+                    <hr>
+
+                    <h2>Media Queries</h2>
+                    <pre><code class="language-css">/* Mobile first */
+@media (min-width: 768px) { }   /* Tablet */
+@media (min-width: 1024px) { }  /* Desktop */
+@media (min-width: 1200px) { }  /* Large */
+
+/* Desktop first */
+@media (max-width: 1199px) { }  /* Below large */
+@media (max-width: 1023px) { }  /* Below desktop */
+@media (max-width: 767px) { }   /* Below tablet */
+
+/* Orientation */
+@media (orientation: landscape) { }
+@media (orientation: portrait) { }
+
+/* Print */
+@media print { }</code></pre>
+
+                    <hr>
+
+                    <h2>CSS Variables</h2>
+                    <pre><code class="language-css">:root {
+    --primary: #007bff;
+    --spacing: 8px;
+}
+
+.element {
+    color: var(--primary);
+    padding: var(--spacing);
+    margin: calc(var(--spacing) * 2);
+}</code></pre>
+
+                    <hr>
+
+                    <h2>Units</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Unit</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>px</code></td><td>Pixels</td></tr>
+                            <tr><td><code>%</code></td><td>Percentage of parent</td></tr>
+                            <tr><td><code>em</code></td><td>Relative to parent font-size</td></tr>
+                            <tr><td><code>rem</code></td><td>Relative to root font-size</td></tr>
+                            <tr><td><code>vw</code></td><td>1% of viewport width</td></tr>
+                            <tr><td><code>vh</code></td><td>1% of viewport height</td></tr>
+                            <tr><td><code>fr</code></td><td>Fraction (grid)</td></tr>
+                            <tr><td><code>ch</code></td><td>Width of "0" character</td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2>Common Patterns</h2>
+
+                    <h3>Center Horizontally</h3>
+                    <pre><code class="language-css">/* Block element */
+margin: 0 auto;
+
+/* Flexbox */
+display: flex;
+justify-content: center;</code></pre>
+
+                    <h3>Center Vertically</h3>
+                    <pre><code class="language-css">/* Flexbox */
+display: flex;
+align-items: center;
+min-height: 100vh;</code></pre>
+
+                    <h3>Center Both</h3>
+                    <pre><code class="language-css">display: flex;
+justify-content: center;
+align-items: center;</code></pre>
+
+                    <h3>Responsive Image</h3>
+                    <pre><code class="language-css">img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}</code></pre>
+
+                    <h3>Reset</h3>
+                    <pre><code class="language-css">* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}</code></pre>
+
+                    <hr>
+
+                    <p><em><a href="../index.html">Back to Main Index</a></em></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">💻</span>
+                    <span>SALIS Coding Course</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Sylenia/SALIS-Coding-Course" target="_blank" rel="noopener">
+                        <svg class="github-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SALIS High School Coding Course. Happy Coding! 🎉</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

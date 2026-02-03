@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js &amp; npm Documentation | SALIS Coding Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">💻</span>
+                <span>SALIS Coding</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Resources</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <section class="content-section">
+            <div class="container content-container">
+                <article class="markdown-content">
+                    <h1>📦 Node.js &amp; npm - JavaScript Runtime &amp; Package Manager</h1>
+
+                    <h2>What is Node.js?</h2>
+                    <p>Node.js is a JavaScript runtime built on Chrome's V8 engine. It allows you to run JavaScript outside the browser, enabling server-side development, build tools, and command-line applications.</p>
+
+                    <h2>What is npm?</h2>
+                    <p>npm (Node Package Manager) is the world's largest software registry. It allows you to install, share, and manage packages (reusable code libraries) for your projects.</p>
+
+                    <p><strong>Cheat Sheet:</strong> <a href="cheatsheet.html">npm Commands Cheat Sheet</a></p>
+
+                    <hr>
+
+                    <h2>📚 Table of Contents</h2>
+                    <ol>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#installing-nodejs-and-npm">Installing Node.js and npm</a></li>
+                        <li><a href="#understanding-nodejs">Understanding Node.js</a></li>
+                        <li><a href="#npm-basics">npm Basics</a></li>
+                        <li><a href="#packagejson">package.json</a></li>
+                        <li><a href="#working-with-packages">Working with Packages</a></li>
+                        <li><a href="#npm-scripts">npm Scripts</a></li>
+                        <li><a href="#common-packages">Common Packages</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ol>
+
+                    <hr>
+
+                    <h2 id="introduction">Introduction</h2>
+
+                    <h3>Why Node.js?</h3>
+                    <ol>
+                        <li><strong>Same language everywhere</strong>: Use JavaScript for both frontend and backend</li>
+                        <li><strong>Large ecosystem</strong>: Millions of packages available via npm</li>
+                        <li><strong>Build tools</strong>: Run development tools like bundlers, linters, and test runners</li>
+                        <li><strong>Fast</strong>: Built on Google's V8 engine</li>
+                        <li><strong>Non-blocking I/O</strong>: Efficient for handling many connections</li>
+                    </ol>
+
+                    <h3>Use Cases</h3>
+                    <ul>
+                        <li>Web servers and APIs</li>
+                        <li>Command-line tools (CLI)</li>
+                        <li>Build tools (Webpack, Vite)</li>
+                        <li>Desktop apps (Electron)</li>
+                        <li>Real-time applications</li>
+                        <li>Automation scripts</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2 id="installing-nodejs-and-npm">Installing Node.js and npm</h2>
+
+                    <h3>Using the Official Installer</h3>
+                    <ol>
+                        <li>Visit <a href="https://nodejs.org/" target="_blank" rel="noopener">nodejs.org</a></li>
+                        <li>Download the <strong>LTS</strong> (Long Term Support) version</li>
+                        <li>Run the installer</li>
+                    </ol>
+
+                    <h3>Using nvm (Recommended)</h3>
+                    <p>nvm (Node Version Manager) allows you to install and switch between multiple Node.js versions.</p>
+
+                    <h4>macOS/Linux</h4>
+                    <pre><code class="language-bash"># Install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+# Restart terminal, then:
+
+# Install latest LTS
+nvm install --lts
+
+# Install specific version
+nvm install 18.17.0
+
+# Switch versions
+nvm use 18.17.0
+
+# Set default version
+nvm alias default 18.17.0
+
+# List installed versions
+nvm ls</code></pre>
+
+                    <h4>Windows</h4>
+                    <p>Use <a href="https://github.com/coreybutler/nvm-windows/releases" target="_blank" rel="noopener">nvm-windows</a></p>
+                    <pre><code class="language-powershell"># After installation:
+nvm install lts
+nvm use lts</code></pre>
+
+                    <h3>Using Homebrew (macOS)</h3>
+                    <pre><code class="language-bash">brew install node</code></pre>
+
+                    <h3>Verify Installation</h3>
+                    <pre><code class="language-bash"># Check Node.js version
+node --version
+# or
+node -v
+
+# Check npm version
+npm --version
+# or
+npm -v</code></pre>
+
+                    <hr>
+
+                    <h2 id="understanding-nodejs">Understanding Node.js</h2>
+
+                    <h3>Running JavaScript with Node</h3>
+                    <pre><code class="language-bash"># Run a JavaScript file
+node script.js
+
+# Open Node REPL (interactive mode)
+node
+&gt; console.log('Hello')
+Hello
+&gt; 2 + 2
+4
+&gt; .exit</code></pre>
+
+                    <h3>Node.js vs Browser JavaScript</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Browser</th>
+                                <th>Node.js</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>DOM manipulation</td><td>✅ Yes</td><td>❌ No</td></tr>
+                            <tr><td><code>window</code> object</td><td>✅ Yes</td><td>❌ No</td></tr>
+                            <tr><td><code>document</code> object</td><td>✅ Yes</td><td>❌ No</td></tr>
+                            <tr><td>File system access</td><td>❌ No</td><td>✅ Yes</td></tr>
+                            <tr><td><code>require</code>/<code>import</code></td><td>Limited</td><td>✅ Full</td></tr>
+                            <tr><td><code>process</code> object</td><td>❌ No</td><td>✅ Yes</td></tr>
+                            <tr><td>Network access</td><td>Limited</td><td>✅ Full</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Basic Node.js Examples</h3>
+
+                    <h4>Hello World</h4>
+                    <pre><code class="language-javascript">// hello.js
+console.log('Hello from Node.js!');</code></pre>
+                    <pre><code class="language-bash">node hello.js
+# Output: Hello from Node.js!</code></pre>
+
+                    <h4>Reading Files</h4>
+                    <pre><code class="language-javascript">// readFile.js
+const fs = require('fs');
+
+// Asynchronous
+fs.readFile('example.txt', 'utf8', (err, data) =&gt; {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log(data);
+});
+
+// Synchronous
+const content = fs.readFileSync('example.txt', 'utf8');
+console.log(content);</code></pre>
+
+                    <h4>Command Line Arguments</h4>
+                    <pre><code class="language-javascript">// args.js
+console.log(process.argv);
+
+// Run: node args.js hello world
+// Output: ['/path/to/node', '/path/to/args.js', 'hello', 'world']</code></pre>
+
+                    <hr>
+
+                    <h2 id="npm-basics">npm Basics</h2>
+
+                    <h3>Initializing a Project</h3>
+                    <pre><code class="language-bash"># Create package.json interactively
+npm init
+
+# Create with defaults
+npm init -y</code></pre>
+                    <p>This creates a <code>package.json</code> file that tracks your project's dependencies and settings.</p>
+
+                    <h3>Installing Packages</h3>
+                    <pre><code class="language-bash"># Install a package (adds to dependencies)
+npm install lodash
+npm i lodash  # shorthand
+
+# Install as dev dependency
+npm install --save-dev eslint
+npm i -D eslint  # shorthand
+
+# Install globally (available everywhere)
+npm install -g nodemon
+
+# Install specific version
+npm install lodash@4.17.21
+
+# Install from package.json
+npm install
+npm i  # shorthand</code></pre>
+
+                    <h3>Types of Dependencies</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Flag</th>
+                                <th>package.json</th>
+                                <th>Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Regular</td><td>(default)</td><td><code>dependencies</code></td><td>Production code (lodash, express)</td></tr>
+                            <tr><td>Dev</td><td><code>-D</code> or <code>--save-dev</code></td><td><code>devDependencies</code></td><td>Development only (eslint, jest)</td></tr>
+                            <tr><td>Global</td><td><code>-g</code></td><td>(none)</td><td>CLI tools (nodemon, create-react-app)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Uninstalling Packages</h3>
+                    <pre><code class="language-bash"># Remove local package
+npm uninstall lodash
+npm un lodash  # shorthand
+
+# Remove dev dependency
+npm uninstall --save-dev eslint
+
+# Remove global package
+npm uninstall -g nodemon</code></pre>
+
+                    <h3>Updating Packages</h3>
+                    <pre><code class="language-bash"># Check for outdated packages
+npm outdated
+
+# Update all packages
+npm update
+
+# Update specific package
+npm update lodash</code></pre>
+
+                    <hr>
+
+                    <h2 id="packagejson">package.json</h2>
+                    <p>The <code>package.json</code> file is the heart of any Node.js project. It contains project metadata and dependencies.</p>
+
+                    <h3>Structure</h3>
+                    <pre><code class="language-json">{
+    "name": "my-project",
+    "version": "1.0.0",
+    "description": "My awesome project",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "test": "jest",
+        "build": "webpack"
+    },
+    "keywords": ["javascript", "nodejs"],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.18.2",
+        "lodash": "^4.17.21"
+    },
+    "devDependencies": {
+        "eslint": "^8.50.0",
+        "jest": "^29.7.0"
+    }
+}</code></pre>
+
+                    <h3>Version Numbers (Semantic Versioning)</h3>
+                    <p>Versions follow the format: <code>MAJOR.MINOR.PATCH</code></p>
+                    <ul>
+                        <li><strong>MAJOR</strong>: Breaking changes</li>
+                        <li><strong>MINOR</strong>: New features (backward compatible)</li>
+                        <li><strong>PATCH</strong>: Bug fixes (backward compatible)</li>
+                    </ul>
+
+                    <h4>Version Specifiers</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Meaning</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>^</code></td><td>Compatible with version</td><td><code>^4.17.0</code> → <code>4.x.x</code></td></tr>
+                            <tr><td><code>~</code></td><td>Approximately equivalent</td><td><code>~4.17.0</code> → <code>4.17.x</code></td></tr>
+                            <tr><td><code>*</code></td><td>Any version</td><td><code>*</code></td></tr>
+                            <tr><td><code>&gt;=</code></td><td>Greater than or equal</td><td><code>&gt;=4.0.0</code></td></tr>
+                            <tr><td>(none)</td><td>Exact version</td><td><code>4.17.21</code></td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>package-lock.json</h3>
+                    <p>This file is automatically generated and locks the exact versions of all installed packages. <strong>Always commit this file</strong> to ensure consistent installs.</p>
+
+                    <hr>
+
+                    <h2 id="working-with-packages">Working with Packages</h2>
+
+                    <h3>Using Packages</h3>
+                    <p>After installing a package, you can use it in your code:</p>
+                    <pre><code class="language-javascript">// CommonJS (default in Node.js)
+const lodash = require('lodash');
+const express = require('express');
+
+// ES Modules (add "type": "module" to package.json)
+import lodash from 'lodash';
+import express from 'express';</code></pre>
+
+                    <h3>Example: Using Lodash</h3>
+                    <pre><code class="language-bash">npm install lodash</code></pre>
+                    <pre><code class="language-javascript">const _ = require('lodash');
+
+const numbers = [1, 2, 3, 4, 5];
+
+console.log(_.sum(numbers));     // 15
+console.log(_.shuffle(numbers)); // [3, 1, 5, 2, 4]
+console.log(_.sample(numbers));  // random element</code></pre>
+
+                    <h3>The node_modules Folder</h3>
+                    <ul>
+                        <li>Contains all installed packages and their dependencies</li>
+                        <li>Can be very large</li>
+                        <li><strong>Never commit to Git</strong> (add to <code>.gitignore</code>)</li>
+                        <li>Regenerate with <code>npm install</code></li>
+                    </ul>
+                    <pre><code class="language-gitignore"># .gitignore
+node_modules/</code></pre>
+
+                    <hr>
+
+                    <h2 id="npm-scripts">npm Scripts</h2>
+                    <p>npm scripts are custom commands defined in <code>package.json</code>. They're great for automating common tasks.</p>
+
+                    <h3>Defining Scripts</h3>
+                    <pre><code class="language-json">{
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon server.js",
+        "test": "jest",
+        "lint": "eslint .",
+        "build": "webpack --mode production",
+        "clean": "rm -rf dist"
+    }
+}</code></pre>
+
+                    <h3>Running Scripts</h3>
+                    <pre><code class="language-bash"># Run a script
+npm run start
+npm run dev
+npm run test
+npm run lint
+
+# Special shortcuts
+npm start    # npm run start
+npm test     # npm run test
+npm t        # npm run test</code></pre>
+
+                    <h3>Chaining Scripts</h3>
+                    <pre><code class="language-json">{
+    "scripts": {
+        "build": "npm run clean && npm run compile",
+        "clean": "rm -rf dist",
+        "compile": "webpack"
+    }
+}</code></pre>
+
+                    <h3>Pre and Post Scripts</h3>
+                    <pre><code class="language-json">{
+    "scripts": {
+        "prebuild": "npm run clean",
+        "build": "webpack",
+        "postbuild": "echo Build complete!"
+    }
+}</code></pre>
+
+                    <hr>
+
+                    <h2 id="common-packages">Common Packages</h2>
+
+                    <h3>Development Tools</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Package</th>
+                                <th>Purpose</th>
+                                <th>Install</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><a href="https://www.npmjs.com/package/nodemon" target="_blank" rel="noopener">nodemon</a></td><td>Auto-restart on changes</td><td><code>npm i -D nodemon</code></td></tr>
+                            <tr><td><a href="https://www.npmjs.com/package/eslint" target="_blank" rel="noopener">eslint</a></td><td>JavaScript linter</td><td><code>npm i -D eslint</code></td></tr>
+                            <tr><td><a href="https://www.npmjs.com/package/prettier" target="_blank" rel="noopener">prettier</a></td><td>Code formatter</td><td><code>npm i -D prettier</code></td></tr>
+                            <tr><td><a href="https://www.npmjs.com/package/jest" target="_blank" rel="noopener">jest</a></td><td>Testing framework</td><td><code>npm i -D jest</code></td></tr>
+                            <tr><td><a href="https://www.npmjs.com/package/typescript" target="_blank" rel="noopener">typescript</a></td><td>TypeScript compiler</td><td><code>npm i -D typescript</code></td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Web Development</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Package</th>
+                                <th>Purpose</th>
+                                <th>Install</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><a href="https://www.npmjs.com/package/express" target="_blank" rel="noopener">express</a></td><td>Web framework</td><td><code>npm i express</code></td></tr>
+                            <tr><td><a href="https://www.npmjs.com/package/axios" target="_blank" rel="noopener">axios</a></td><td>HTTP client</td><td><code>npm i axios</code></td></tr>
+                            <tr><td><a href="https://www.npmjs.com/package/cors" target="_blank" rel="noopener">cors</a></td><td>CORS middleware</td><td><code>npm i cors</code></td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Utilities</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Package</th>
+                                <th>Purpose</th>
+                                <th>Install</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><a href="https://www.npmjs.com/package/lodash" target="_blank" rel="noopener">lodash</a></td><td>Utility functions</td><td><code>npm i lodash</code></td></tr>
+                            <tr><td><a href="https://www.npmjs.com/package/date-fns" target="_blank" rel="noopener">date-fns</a></td><td>Date utilities</td><td><code>npm i date-fns</code></td></tr>
+                            <tr><td><a href="https://www.npmjs.com/package/uuid" target="_blank" rel="noopener">uuid</a></td><td>Generate UUIDs</td><td><code>npm i uuid</code></td></tr>
+                            <tr><td><a href="https://www.npmjs.com/package/dotenv" target="_blank" rel="noopener">dotenv</a></td><td>Environment variables</td><td><code>npm i dotenv</code></td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Build Tools</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Package</th>
+                                <th>Purpose</th>
+                                <th>Install</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><a href="https://www.npmjs.com/package/vite" target="_blank" rel="noopener">vite</a></td><td>Modern build tool</td><td><code>npm i -D vite</code></td></tr>
+                            <tr><td><a href="https://www.npmjs.com/package/webpack" target="_blank" rel="noopener">webpack</a></td><td>Module bundler</td><td><code>npm i -D webpack</code></td></tr>
+                            <tr><td><a href="https://www.npmjs.com/package/parcel" target="_blank" rel="noopener">parcel</a></td><td>Zero-config bundler</td><td><code>npm i -D parcel</code></td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2 id="best-practices">Best Practices</h2>
+
+                    <h3>✅ Do's</h3>
+                    <ol>
+                        <li><strong>Use exact versions</strong> in production (<code>npm i --save-exact</code>)</li>
+                        <li><strong>Commit package-lock.json</strong></li>
+                        <li><strong>Use .gitignore</strong> for node_modules</li>
+                        <li><strong>Use npm scripts</strong> for common tasks</li>
+                        <li><strong>Keep dependencies updated</strong></li>
+                        <li><strong>Use devDependencies</strong> correctly</li>
+                        <li><strong>Check package quality</strong> before installing</li>
+                    </ol>
+
+                    <h3>❌ Don'ts</h3>
+                    <ol>
+                        <li><strong>Don't commit node_modules</strong></li>
+                        <li><strong>Don't install everything globally</strong></li>
+                        <li><strong>Don't ignore security warnings</strong> (<code>npm audit</code>)</li>
+                        <li><strong>Don't use outdated packages</strong></li>
+                        <li><strong>Don't install packages you don't need</strong></li>
+                    </ol>
+
+                    <h3>Security</h3>
+                    <pre><code class="language-bash"># Check for vulnerabilities
+npm audit
+
+# Fix vulnerabilities
+npm audit fix
+
+# Force fix (may have breaking changes)
+npm audit fix --force</code></pre>
+
+                    <h3>Useful Commands</h3>
+                    <pre><code class="language-bash"># List installed packages
+npm list
+npm ls --depth=0  # Top-level only
+
+# View package info
+npm info lodash
+
+# Search packages
+npm search keyword
+
+# Check npm cache
+npm cache verify
+
+# Clean npm cache
+npm cache clean --force</code></pre>
+
+                    <hr>
+
+                    <h2 id="resources">🔗 Resources</h2>
+
+                    <h3>Official Documentation</h3>
+                    <ul>
+                        <li><a href="https://nodejs.org/en/docs/" target="_blank" rel="noopener">Node.js Documentation</a> - Official Node.js docs</li>
+                        <li><a href="https://docs.npmjs.com/" target="_blank" rel="noopener">npm Documentation</a> - Official npm docs</li>
+                        <li><a href="https://www.npmjs.com/" target="_blank" rel="noopener">npmjs.com</a> - Package registry</li>
+                    </ul>
+
+                    <h3>Tutorials</h3>
+                    <ul>
+                        <li><a href="https://www.w3schools.com/nodejs/" target="_blank" rel="noopener">Node.js Tutorial (W3Schools)</a> - Beginner-friendly</li>
+                        <li><a href="https://www.freecodecamp.org/news/the-definitive-node-js-handbook/" target="_blank" rel="noopener">The Node.js Handbook</a> - Comprehensive guide</li>
+                        <li><a href="https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs" target="_blank" rel="noopener">Node.js (The Odin Project)</a> - Project-based</li>
+                    </ul>
+
+                    <h3>Video Resources</h3>
+                    <ul>
+                        <li><a href="https://www.youtube.com/watch?v=fBNz5xF-Kx4" target="_blank" rel="noopener">Node.js Crash Course (Traversy Media)</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=jHDhaSSKmB0" target="_blank" rel="noopener">npm Crash Course</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=TlB_eWDSMt4" target="_blank" rel="noopener">Node.js Tutorial (Programming with Mosh)</a></li>
+                    </ul>
+
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener">nvm (Node Version Manager)</a> - Manage Node versions</li>
+                        <li><a href="https://www.npmjs.com/package/npx" target="_blank" rel="noopener">npx</a> - Execute npm packages</li>
+                        <li><a href="https://npmtrends.com/" target="_blank" rel="noopener">npm trends</a> - Compare package popularity</li>
+                    </ul>
+
+                    <h3>Package Discovery</h3>
+                    <ul>
+                        <li><a href="https://github.com/sindresorhus/awesome-nodejs" target="_blank" rel="noopener">Awesome Node.js</a> - Curated list</li>
+                        <li><a href="https://npms.io/" target="_blank" rel="noopener">npms.io</a> - Package search with quality scores</li>
+                        <li><a href="https://bundlephobia.com/" target="_blank" rel="noopener">Bundlephobia</a> - Check package sizes</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>📝 Exercises</h2>
+
+                    <h3>Exercise 1: Initialize a Project</h3>
+                    <ol>
+                        <li>Create a new folder</li>
+                        <li>Run <code>npm init -y</code></li>
+                        <li>Install lodash</li>
+                        <li>Create a script that uses lodash</li>
+                        <li>Add an npm script to run it</li>
+                    </ol>
+
+                    <h3>Exercise 2: Build Script</h3>
+                    <ol>
+                        <li>Create a project with source files</li>
+                        <li>Install a bundler (parcel or vite)</li>
+                        <li>Add build and dev scripts</li>
+                        <li>Run your development server</li>
+                    </ol>
+
+                    <h3>Exercise 3: CLI Tool</h3>
+                    <ol>
+                        <li>Create a simple command-line tool</li>
+                        <li>Use <code>process.argv</code> for arguments</li>
+                        <li>Install chalk for colored output</li>
+                        <li>Make it executable with <code>npm link</code></li>
+                    </ol>
+
+                    <hr>
+
+                    <p><em>Previous: <a href="../04-git-github/index.html">Git &amp; GitHub Documentation</a> | Next: <a href="../06-ai-assistants/index.html">AI &amp; LLMs Documentation</a></em></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">💻</span>
+                    <span>SALIS Coding Course</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Sylenia/SALIS-Coding-Course" target="_blank" rel="noopener">
+                        <svg class="github-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SALIS High School Coding Course. Happy Coding! 🎉</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

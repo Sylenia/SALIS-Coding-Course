@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>npm Commands Cheat Sheet | SALIS Coding Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">💻</span>
+                <span>SALIS Coding</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Resources</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <section class="content-section">
+            <div class="container content-container">
+                <article class="markdown-content">
+                    <h1>📋 npm Commands Cheat Sheet</h1>
+                    <p>Quick reference guide for npm commands.</p>
+
+                    <hr>
+
+                    <h2>Getting Started</h2>
+                    <pre><code class="language-bash"># Check version
+node -v                  # Node.js version
+npm -v                   # npm version
+
+# Initialize project
+npm init                 # Interactive setup
+npm init -y              # Quick setup with defaults</code></pre>
+
+                    <hr>
+
+                    <h2>Installing Packages</h2>
+                    <pre><code class="language-bash"># Install from package.json
+npm install
+npm i                    # Shorthand
+
+# Install package (dependency)
+npm install &lt;package&gt;
+npm i &lt;package&gt;
+
+# Install dev dependency
+npm install --save-dev &lt;package&gt;
+npm i -D &lt;package&gt;
+
+# Install global package
+npm install --global &lt;package&gt;
+npm i -g &lt;package&gt;
+
+# Install specific version
+npm install &lt;package&gt;@&lt;version&gt;
+npm install lodash@4.17.21
+
+# Install from GitHub
+npm install username/repo</code></pre>
+
+                    <hr>
+
+                    <h2>Uninstalling Packages</h2>
+                    <pre><code class="language-bash"># Uninstall package
+npm uninstall &lt;package&gt;
+npm un &lt;package&gt;
+npm remove &lt;package&gt;
+npm rm &lt;package&gt;
+
+# Uninstall dev dependency
+npm uninstall --save-dev &lt;package&gt;
+npm un -D &lt;package&gt;
+
+# Uninstall global
+npm uninstall -g &lt;package&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Updating Packages</h2>
+                    <pre><code class="language-bash"># Check outdated packages
+npm outdated
+
+# Update all packages
+npm update
+npm up
+
+# Update specific package
+npm update &lt;package&gt;
+
+# Update to latest (may have breaking changes)
+npm install &lt;package&gt;@latest</code></pre>
+
+                    <hr>
+
+                    <h2>Running Scripts</h2>
+                    <pre><code class="language-bash"># Run a script from package.json
+npm run &lt;script-name&gt;
+
+# Common shortcuts
+npm start                # npm run start
+npm test                 # npm run test
+npm t                    # npm run test
+
+# Examples
+npm run dev
+npm run build
+npm run lint</code></pre>
+
+                    <hr>
+
+                    <h2>Package Info</h2>
+                    <pre><code class="language-bash"># List installed packages
+npm list
+npm ls
+
+# List top-level only
+npm list --depth=0
+npm ls --depth=0
+
+# List global packages
+npm list -g --depth=0
+
+# View package info
+npm info &lt;package&gt;
+npm view &lt;package&gt;
+npm show &lt;package&gt;
+
+# View package versions
+npm view &lt;package&gt; versions
+
+# Search packages
+npm search &lt;keyword&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Project Info</h2>
+                    <pre><code class="language-bash"># View package.json
+cat package.json
+
+# View installed versions
+npm ls &lt;package&gt;
+
+# Check for issues
+npm doctor
+
+# Verify cache
+npm cache verify</code></pre>
+
+                    <hr>
+
+                    <h2>Security</h2>
+                    <pre><code class="language-bash"># Check for vulnerabilities
+npm audit
+
+# Fix vulnerabilities
+npm audit fix
+
+# Force fix (may break things)
+npm audit fix --force
+
+# View detailed report
+npm audit --json</code></pre>
+
+                    <hr>
+
+                    <h2>Cache Management</h2>
+                    <pre><code class="language-bash"># Verify cache
+npm cache verify
+
+# Clean cache
+npm cache clean --force
+
+# View cache folder
+npm config get cache</code></pre>
+
+                    <hr>
+
+                    <h2>Configuration</h2>
+                    <pre><code class="language-bash"># View all config
+npm config list
+npm config ls -l         # All defaults too
+
+# Get config value
+npm config get &lt;key&gt;
+npm config get registry
+
+# Set config value
+npm config set &lt;key&gt; &lt;value&gt;
+
+# Delete config value
+npm config delete &lt;key&gt;
+
+# Edit config file
+npm config edit</code></pre>
+
+                    <hr>
+
+                    <h2>Publishing (Advanced)</h2>
+                    <pre><code class="language-bash"># Login to npm
+npm login
+
+# Publish package
+npm publish
+
+# Publish with tag
+npm publish --tag beta
+
+# Unpublish (within 72 hours)
+npm unpublish &lt;package&gt;@&lt;version&gt;
+
+# Deprecate version
+npm deprecate &lt;package&gt;@&lt;version&gt; "message"</code></pre>
+
+                    <hr>
+
+                    <h2>Useful Flags</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Flag</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>--save</code></td><td>Add to dependencies (default)</td></tr>
+                            <tr><td><code>-D, --save-dev</code></td><td>Add to devDependencies</td></tr>
+                            <tr><td><code>-g, --global</code></td><td>Install globally</td></tr>
+                            <tr><td><code>--save-exact</code></td><td>Save exact version</td></tr>
+                            <tr><td><code>--dry-run</code></td><td>Preview without doing</td></tr>
+                            <tr><td><code>--force</code></td><td>Force the operation</td></tr>
+                            <tr><td><code>--production</code></td><td>Skip devDependencies</td></tr>
+                            <tr><td><code>--legacy-peer-deps</code></td><td>Ignore peer deps</td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2>npx - Execute Packages</h2>
+                    <pre><code class="language-bash"># Run package without installing
+npx &lt;package&gt;
+
+# Examples
+npx create-react-app my-app
+npx eslint .
+npx prettier --write .
+npx cowsay "Hello!"
+
+# Run specific version
+npx &lt;package&gt;@&lt;version&gt;
+
+# Run from npm registry
+npx -p &lt;package&gt; &lt;command&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Version Management with nvm</h2>
+                    <pre><code class="language-bash"># Install nvm (macOS/Linux)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+# List available versions
+nvm ls-remote
+
+# Install Node version
+nvm install &lt;version&gt;
+nvm install 18
+nvm install --lts
+
+# Use Node version
+nvm use &lt;version&gt;
+nvm use 18
+
+# Set default version
+nvm alias default &lt;version&gt;
+
+# List installed versions
+nvm ls
+
+# Current version
+nvm current</code></pre>
+
+                    <hr>
+
+                    <h2>Common Workflows</h2>
+
+                    <h3>New Project</h3>
+                    <pre><code class="language-bash">mkdir my-project
+cd my-project
+npm init -y
+npm install &lt;dependencies&gt;</code></pre>
+
+                    <h3>Clone &amp; Setup</h3>
+                    <pre><code class="language-bash">git clone &lt;repo&gt;
+cd &lt;repo&gt;
+npm install
+npm run dev</code></pre>
+
+                    <h3>Add Dev Tools</h3>
+                    <pre><code class="language-bash">npm i -D eslint prettier
+npm i -D nodemon
+npm i -D jest</code></pre>
+
+                    <h3>Clean Install</h3>
+                    <pre><code class="language-bash">rm -rf node_modules
+rm package-lock.json
+npm install</code></pre>
+
+                    <hr>
+
+                    <h2>package.json Scripts</h2>
+                    <pre><code class="language-json">{
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "build": "webpack --mode production",
+        "clean": "rm -rf dist"
+    }
+}</code></pre>
+
+                    <hr>
+
+                    <h2>Environment Variables</h2>
+                    <pre><code class="language-bash"># Using dotenv package
+npm install dotenv
+
+# In .env file
+API_KEY=your_api_key
+PORT=3000
+
+# In your code
+require('dotenv').config();
+console.log(process.env.API_KEY);</code></pre>
+
+                    <hr>
+
+                    <h2>Troubleshooting</h2>
+                    <pre><code class="language-bash"># Clear npm cache
+npm cache clean --force
+
+# Reinstall dependencies
+rm -rf node_modules package-lock.json
+npm install
+
+# Check Node/npm versions
+node -v
+npm -v
+
+# Fix permissions (macOS/Linux)
+sudo chown -R $(whoami) ~/.npm
+
+# Check for issues
+npm doctor</code></pre>
+
+                    <hr>
+
+                    <p><em><a href="../index.html">Back to Main Index</a></em></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">💻</span>
+                    <span>SALIS Coding Course</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Sylenia/SALIS-Coding-Course" target="_blank" rel="noopener">
+                        <svg class="github-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SALIS High School Coding Course. Happy Coding! 🎉</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Documentation | SALIS Coding Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">💻</span>
+                <span>SALIS Coding</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Resources</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <section class="content-section">
+            <div class="container content-container">
+                <article class="markdown-content">
+                    <h1>🌐 HTML - HyperText Markup Language</h1>
+
+                    <h2>What is HTML?</h2>
+                    <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages. It describes the structure of a web page using a series of elements that tell the browser how to display content.</p>
+
+                    <p><strong>Cheat Sheet:</strong> <a href="cheatsheet.html">HTML Cheat Sheet</a></p>
+
+                    <hr>
+
+                    <h2>📚 Table of Contents</h2>
+                    <ol>
+                        <li><a href="#introduction-to-html">Introduction to HTML</a></li>
+                        <li><a href="#html-document-structure">HTML Document Structure</a></li>
+                        <li><a href="#common-html-elements">Common HTML Elements</a></li>
+                        <li><a href="#semantic-html">Semantic HTML</a></li>
+                        <li><a href="#forms-and-inputs">Forms and Inputs</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ol>
+
+                    <hr>
+
+                    <h2 id="introduction-to-html">Introduction to HTML</h2>
+
+                    <h3>History</h3>
+                    <ul>
+                        <li><strong>1991</strong>: Tim Berners-Lee created HTML</li>
+                        <li><strong>1995</strong>: HTML 2.0 became a standard</li>
+                        <li><strong>2014</strong>: HTML5 was released (current standard)</li>
+                    </ul>
+
+                    <h3>How HTML Works</h3>
+                    <p>HTML uses <strong>tags</strong> to mark up content. Tags are enclosed in angle brackets &lt; &gt; and usually come in pairs:</p>
+                    <pre><code class="language-html">&lt;tagname&gt;Content goes here&lt;/tagname&gt;</code></pre>
+
+                    <h3>Your First HTML Page</h3>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;This is my first web page.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <hr>
+
+                    <h2 id="html-document-structure">HTML Document Structure</h2>
+                    <p>Every HTML document follows this basic structure:</p>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;           &lt;!-- Declares HTML5 --&gt;
+&lt;html lang="en"&gt;          &lt;!-- Root element --&gt;
+&lt;head&gt;                    &lt;!-- Metadata container --&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;                    &lt;!-- Visible content --&gt;
+    &lt;!-- Your content here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <h3>Key Elements Explained</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>&lt;!DOCTYPE html&gt;</code></td>
+                                <td>Declares the document type as HTML5</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;html&gt;</code></td>
+                                <td>Root element of the page</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;head&gt;</code></td>
+                                <td>Contains metadata (not displayed)</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;title&gt;</code></td>
+                                <td>Sets the browser tab title</td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;body&gt;</code></td>
+                                <td>Contains all visible content</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2 id="common-html-elements">Common HTML Elements</h2>
+
+                    <h3>Text Elements</h3>
+                    <pre><code class="language-html">&lt;!-- Headings (h1 is largest, h6 is smallest) --&gt;
+&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;
+&lt;h3&gt;Section Heading&lt;/h3&gt;
+
+&lt;!-- Paragraphs --&gt;
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+
+&lt;!-- Text formatting --&gt;
+&lt;strong&gt;Bold text&lt;/strong&gt;
+&lt;em&gt;Italic text&lt;/em&gt;
+&lt;mark&gt;Highlighted text&lt;/mark&gt;
+&lt;code&gt;Inline code&lt;/code&gt;
+
+&lt;!-- Line break and horizontal rule --&gt;
+&lt;br&gt;
+&lt;hr&gt;</code></pre>
+
+                    <h3>Lists</h3>
+                    <pre><code class="language-html">&lt;!-- Unordered list (bullets) --&gt;
+&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Ordered list (numbers) --&gt;
+&lt;ol&gt;
+    &lt;li&gt;First item&lt;/li&gt;
+    &lt;li&gt;Second item&lt;/li&gt;
+    &lt;li&gt;Third item&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+                    <h3>Links and Images</h3>
+                    <pre><code class="language-html">&lt;!-- Links --&gt;
+&lt;a href="https://example.com"&gt;Visit Example&lt;/a&gt;
+&lt;a href="about.html"&gt;About Page&lt;/a&gt;
+&lt;a href="#section-id"&gt;Jump to Section&lt;/a&gt;
+
+&lt;!-- Images --&gt;
+&lt;img src="image.jpg" alt="Description of image"&gt;
+&lt;img src="https://example.com/photo.png" alt="Online image" width="300"&gt;</code></pre>
+
+                    <h3>Tables</h3>
+                    <pre><code class="language-html">&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Age&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Alice&lt;/td&gt;
+            &lt;td&gt;17&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Bob&lt;/td&gt;
+            &lt;td&gt;16&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+                    <h3>Divisions and Spans</h3>
+                    <pre><code class="language-html">&lt;!-- Block-level container --&gt;
+&lt;div class="container"&gt;
+    &lt;p&gt;Content inside a div&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Inline container --&gt;
+&lt;p&gt;This is &lt;span class="highlight"&gt;highlighted&lt;/span&gt; text.&lt;/p&gt;</code></pre>
+
+                    <hr>
+
+                    <h2 id="semantic-html">Semantic HTML</h2>
+                    <p>Semantic elements clearly describe their meaning to both the browser and developer.</p>
+
+                    <h3>Why Use Semantic HTML?</h3>
+                    <ul>
+                        <li><strong>Accessibility</strong>: Screen readers understand the page structure</li>
+                        <li><strong>SEO</strong>: Search engines better understand your content</li>
+                        <li><strong>Maintainability</strong>: Code is easier to read and maintain</li>
+                    </ul>
+
+                    <h3>Semantic Elements</h3>
+                    <pre><code class="language-html">&lt;header&gt;      &lt;!-- Page or section header --&gt;
+&lt;nav&gt;         &lt;!-- Navigation links --&gt;
+&lt;main&gt;        &lt;!-- Main content (one per page) --&gt;
+&lt;article&gt;     &lt;!-- Self-contained content --&gt;
+&lt;section&gt;     &lt;!-- Thematic grouping of content --&gt;
+&lt;aside&gt;       &lt;!-- Sidebar content --&gt;
+&lt;footer&gt;      &lt;!-- Page or section footer --&gt;
+&lt;figure&gt;      &lt;!-- Self-contained media --&gt;
+&lt;figcaption&gt;  &lt;!-- Caption for figure --&gt;</code></pre>
+
+                    <h3>Example Semantic Page Structure</h3>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Semantic HTML Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My Website&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="/"&gt;Home&lt;/a&gt;
+            &lt;a href="/about"&gt;About&lt;/a&gt;
+            &lt;a href="/contact"&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;h2&gt;Article Title&lt;/h2&gt;
+            &lt;p&gt;Article content...&lt;/p&gt;
+        &lt;/article&gt;
+        
+        &lt;aside&gt;
+            &lt;h3&gt;Related Links&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2024 My Website&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <hr>
+
+                    <h2 id="forms-and-inputs">Forms and Inputs</h2>
+                    <p>Forms allow users to submit data to a website.</p>
+
+                    <h3>Basic Form Structure</h3>
+                    <pre><code class="language-html">&lt;form action="/submit" method="POST"&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" required&gt;
+    
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+    
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+                    <h3>Input Types</h3>
+                    <pre><code class="language-html">&lt;input type="text"&gt;        &lt;!-- Single-line text --&gt;
+&lt;input type="password"&gt;    &lt;!-- Password (hidden) --&gt;
+&lt;input type="email"&gt;       &lt;!-- Email validation --&gt;
+&lt;input type="number"&gt;      &lt;!-- Numeric input --&gt;
+&lt;input type="date"&gt;        &lt;!-- Date picker --&gt;
+&lt;input type="checkbox"&gt;    &lt;!-- Checkbox --&gt;
+&lt;input type="radio"&gt;       &lt;!-- Radio button --&gt;
+&lt;input type="file"&gt;        &lt;!-- File upload --&gt;
+&lt;input type="range"&gt;       &lt;!-- Slider --&gt;
+&lt;input type="color"&gt;       &lt;!-- Color picker --&gt;
+
+&lt;textarea&gt;&lt;/textarea&gt;      &lt;!-- Multi-line text --&gt;
+&lt;select&gt;                   &lt;!-- Dropdown --&gt;
+    &lt;option&gt;Option 1&lt;/option&gt;
+    &lt;option&gt;Option 2&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+
+                    <hr>
+
+                    <h2 id="best-practices">Best Practices</h2>
+
+                    <h3>✅ Do's</h3>
+                    <ol>
+                        <li><strong>Always include <code>&lt;!DOCTYPE html&gt;</code></strong> at the top</li>
+                        <li><strong>Use semantic elements</strong> when possible</li>
+                        <li><strong>Always add <code>alt</code> attributes</strong> to images</li>
+                        <li><strong>Use proper indentation</strong> for readability</li>
+                        <li><strong>Validate your HTML</strong> using the W3C Validator</li>
+                        <li><strong>Use lowercase</strong> for tag names</li>
+                        <li><strong>Close all tags</strong> properly</li>
+                    </ol>
+
+                    <h3>❌ Don'ts</h3>
+                    <ol>
+                        <li><strong>Don't skip heading levels</strong> (h1 → h3)</li>
+                        <li><strong>Don't use <code>&lt;br&gt;</code> for spacing</strong> (use CSS)</li>
+                        <li><strong>Don't use tables for layout</strong> (use CSS Grid/Flexbox)</li>
+                        <li><strong>Don't use deprecated tags</strong> like <code>&lt;center&gt;</code> or <code>&lt;font&gt;</code></li>
+                        <li><strong>Don't forget the <code>lang</code> attribute</strong> on <code>&lt;html&gt;</code></li>
+                    </ol>
+
+                    <hr>
+
+                    <h2 id="resources">🔗 Resources</h2>
+
+                    <h3>Official Documentation</h3>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener">MDN HTML Reference</a> - Comprehensive HTML documentation</li>
+                        <li><a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener">W3C HTML Specification</a> - Official HTML standard</li>
+                        <li><a href="https://www.w3schools.com/html/" target="_blank" rel="noopener">W3Schools HTML Tutorial</a> - Beginner-friendly tutorials</li>
+                    </ul>
+
+                    <h3>Interactive Learning</h3>
+                    <ul>
+                        <li><a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/" target="_blank" rel="noopener">freeCodeCamp HTML Course</a> - Free interactive lessons</li>
+                        <li><a href="https://www.codecademy.com/learn/learn-html" target="_blank" rel="noopener">Codecademy HTML Course</a> - Structured learning path</li>
+                        <li><a href="https://www.theodinproject.com/paths/foundations/courses/foundations#html-foundations" target="_blank" rel="noopener">The Odin Project - HTML</a> - Project-based learning</li>
+                    </ul>
+
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="https://validator.w3.org/" target="_blank" rel="noopener">W3C HTML Validator</a> - Check your HTML for errors</li>
+                        <li><a href="https://caniuse.com/" target="_blank" rel="noopener">Can I Use</a> - Browser compatibility tables</li>
+                        <li><a href="https://html.spec.whatwg.org/multipage/named-characters.html" target="_blank" rel="noopener">HTML Entity Reference</a> - Special characters</li>
+                    </ul>
+
+                    <h3>Practice</h3>
+                    <ul>
+                        <li><a href="https://www.w3schools.com/html/html_exercises.asp" target="_blank" rel="noopener">HTML Exercises on W3Schools</a></li>
+                        <li><a href="https://www.frontendmentor.io/" target="_blank" rel="noopener">Frontend Mentor</a> - Real-world projects</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>📝 Exercises</h2>
+
+                    <h3>Exercise 1: Personal Profile Page</h3>
+                    <p>Create a webpage about yourself with:</p>
+                    <ul>
+                        <li>A heading with your name</li>
+                        <li>A paragraph about your hobbies</li>
+                        <li>An image (can be a placeholder)</li>
+                        <li>A list of your favorite things</li>
+                    </ul>
+
+                    <h3>Exercise 2: Recipe Page</h3>
+                    <p>Create a recipe page with:</p>
+                    <ul>
+                        <li>Recipe title</li>
+                        <li>List of ingredients (unordered list)</li>
+                        <li>Step-by-step instructions (ordered list)</li>
+                        <li>An image of the dish</li>
+                    </ul>
+
+                    <h3>Exercise 3: Contact Form</h3>
+                    <p>Create a contact form with:</p>
+                    <ul>
+                        <li>Name input</li>
+                        <li>Email input</li>
+                        <li>Message textarea</li>
+                        <li>Submit button</li>
+                    </ul>
+
+                    <hr>
+
+                    <p><em>Next: <a href="../02-css/index.html">CSS Documentation</a></em></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">💻</span>
+                    <span>SALIS Coding Course</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Sylenia/SALIS-Coding-Course" target="_blank" rel="noopener">
+                        <svg class="github-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SALIS High School Coding Course. Happy Coding! 🎉</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

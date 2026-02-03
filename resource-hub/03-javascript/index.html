@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Documentation | SALIS Coding Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">💻</span>
+                <span>SALIS Coding</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Resources</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <section class="content-section">
+            <div class="container content-container">
+                <article class="markdown-content">
+                    <h1>⚡ JavaScript - Programming Language of the Web</h1>
+
+                    <h2>What is JavaScript?</h2>
+                    <p>JavaScript (JS) is a versatile, high-level programming language primarily used to create interactive and dynamic content on websites. It runs in web browsers and can also be used server-side with Node.js.</p>
+
+                    <p><strong>Cheat Sheet:</strong> <a href="cheatsheet.html">JavaScript Cheat Sheet</a></p>
+
+                    <hr>
+
+                    <h2>📚 Table of Contents</h2>
+                    <ol>
+                        <li><a href="#introduction-to-javascript">Introduction to JavaScript</a></li>
+                        <li><a href="#variables-and-data-types">Variables and Data Types</a></li>
+                        <li><a href="#operators">Operators</a></li>
+                        <li><a href="#control-flow">Control Flow</a></li>
+                        <li><a href="#functions">Functions</a></li>
+                        <li><a href="#arrays">Arrays</a></li>
+                        <li><a href="#objects">Objects</a></li>
+                        <li><a href="#dom-manipulation">DOM Manipulation</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#asynchronous-javascript">Asynchronous JavaScript</a></li>
+                        <li><a href="#es6-features">ES6+ Features</a></li>
+                        <li><a href="#best-practices">Best Practices</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ol>
+
+                    <hr>
+
+                    <h2 id="introduction-to-javascript">Introduction to JavaScript</h2>
+
+                    <h3>Adding JavaScript to HTML</h3>
+
+                    <h4>External File (Recommended)</h4>
+                    <pre><code class="language-html">&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+
+                    <h4>Inline Script</h4>
+                    <pre><code class="language-html">&lt;script&gt;
+    console.log('Hello, World!');
+&lt;/script&gt;</code></pre>
+
+                    <h3>Where to Place Script Tags</h3>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;!-- Scripts that need to load first --&gt;
+    &lt;script src="critical.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Content --&gt;
+    
+    &lt;!-- Scripts at the end (recommended) --&gt;
+    &lt;script src="main.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <p>Or use <code>defer</code> attribute:</p>
+                    <pre><code class="language-html">&lt;script src="main.js" defer&gt;&lt;/script&gt;</code></pre>
+
+                    <h3>The Console</h3>
+                    <pre><code class="language-javascript">console.log('Regular message');
+console.warn('Warning message');
+console.error('Error message');
+console.table([{name: 'Alice'}, {name: 'Bob'}]);</code></pre>
+
+                    <hr>
+
+                    <h2 id="variables-and-data-types">Variables and Data Types</h2>
+
+                    <h3>Declaring Variables</h3>
+                    <pre><code class="language-javascript">// const - cannot be reassigned (preferred)
+const PI = 3.14159;
+const name = 'Alice';
+
+// let - can be reassigned
+let score = 0;
+score = 100;
+
+// var - old way (avoid using)
+var oldWay = 'not recommended';</code></pre>
+
+                    <h3>Data Types</h3>
+
+                    <h4>Primitive Types</h4>
+                    <pre><code class="language-javascript">// String
+const greeting = 'Hello';
+const name = "World";
+const template = `Hello, ${name}!`;  // Template literal
+
+// Number
+const integer = 42;
+const decimal = 3.14;
+const negative = -10;
+
+// Boolean
+const isActive = true;
+const isComplete = false;
+
+// Undefined
+let notAssigned;  // undefined
+
+// Null
+const empty = null;
+
+// Symbol (ES6)
+const unique = Symbol('description');
+
+// BigInt (ES2020)
+const bigNumber = 9007199254740991n;</code></pre>
+
+                    <h4>Type Checking</h4>
+                    <pre><code class="language-javascript">typeof 'hello'     // 'string'
+typeof 42          // 'number'
+typeof true        // 'boolean'
+typeof undefined   // 'undefined'
+typeof null        // 'object' (JavaScript quirk)
+typeof {}          // 'object'
+typeof []          // 'object'
+typeof function(){} // 'function'</code></pre>
+
+                    <hr>
+
+                    <h2 id="operators">Operators</h2>
+
+                    <h3>Arithmetic Operators</h3>
+                    <pre><code class="language-javascript">const a = 10;
+const b = 3;
+
+a + b    // 13 (addition)
+a - b    // 7 (subtraction)
+a * b    // 30 (multiplication)
+a / b    // 3.333... (division)
+a % b    // 1 (modulus/remainder)
+a ** b   // 1000 (exponentiation)</code></pre>
+
+                    <h3>Assignment Operators</h3>
+                    <pre><code class="language-javascript">let x = 10;
+
+x += 5;  // x = x + 5  → 15
+x -= 3;  // x = x - 3  → 12
+x *= 2;  // x = x * 2  → 24
+x /= 4;  // x = x / 4  → 6
+x++;     // x = x + 1  → 7
+x--;     // x = x - 1  → 6</code></pre>
+
+                    <h3>Comparison Operators</h3>
+                    <pre><code class="language-javascript">5 == '5'    // true (loose equality)
+5 === '5'   // false (strict equality - recommended)
+5 != '5'    // false
+5 !== '5'   // true
+5 &gt; 3       // true
+5 &lt; 3       // false
+5 &gt;= 5      // true
+5 &lt;= 4      // false</code></pre>
+
+                    <h3>Logical Operators</h3>
+                    <pre><code class="language-javascript">true && true   // true (AND)
+true || false  // true (OR)
+!true          // false (NOT)
+
+// Short-circuit evaluation
+const result = value || 'default';
+const name = user && user.name;
+
+// Nullish coalescing (ES2020)
+const value = null ?? 'default';  // 'default'
+const value = 0 ?? 'default';     // 0</code></pre>
+
+                    <hr>
+
+                    <h2 id="control-flow">Control Flow</h2>
+
+                    <h3>Conditional Statements</h3>
+                    <pre><code class="language-javascript">// if...else
+const age = 18;
+
+if (age &gt;= 18) {
+    console.log('Adult');
+} else if (age &gt;= 13) {
+    console.log('Teenager');
+} else {
+    console.log('Child');
+}
+
+// Ternary operator
+const status = age &gt;= 18 ? 'Adult' : 'Minor';
+
+// Switch
+const day = 'Monday';
+
+switch (day) {
+    case 'Monday':
+    case 'Tuesday':
+        console.log('Weekday');
+        break;
+    case 'Saturday':
+    case 'Sunday':
+        console.log('Weekend');
+        break;
+    default:
+        console.log('Invalid day');
+}</code></pre>
+
+                    <h3>Loops</h3>
+                    <pre><code class="language-javascript">// for loop
+for (let i = 0; i &lt; 5; i++) {
+    console.log(i);  // 0, 1, 2, 3, 4
+}
+
+// while loop
+let count = 0;
+while (count &lt; 5) {
+    console.log(count);
+    count++;
+}
+
+// do...while loop
+let num = 0;
+do {
+    console.log(num);
+    num++;
+} while (num &lt; 5);
+
+// for...of (for iterables like arrays)
+const colors = ['red', 'green', 'blue'];
+for (const color of colors) {
+    console.log(color);
+}
+
+// for...in (for object properties)
+const person = { name: 'Alice', age: 25 };
+for (const key in person) {
+    console.log(`${key}: ${person[key]}`);
+}
+
+// break and continue
+for (let i = 0; i &lt; 10; i++) {
+    if (i === 5) break;     // exit loop
+    if (i === 3) continue;  // skip iteration
+    console.log(i);
+}</code></pre>
+
+                    <hr>
+
+                    <h2 id="functions">Functions</h2>
+
+                    <h3>Function Declaration</h3>
+                    <pre><code class="language-javascript">function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+console.log(greet('Alice'));  // Hello, Alice!</code></pre>
+
+                    <h3>Function Expression</h3>
+                    <pre><code class="language-javascript">const greet = function(name) {
+    return `Hello, ${name}!`;
+};</code></pre>
+
+                    <h3>Arrow Functions (ES6)</h3>
+                    <pre><code class="language-javascript">// Basic arrow function
+const greet = (name) =&gt; {
+    return `Hello, ${name}!`;
+};
+
+// Concise body (single expression)
+const greet = name =&gt; `Hello, ${name}!`;
+
+// Multiple parameters
+const add = (a, b) =&gt; a + b;
+
+// No parameters
+const sayHi = () =&gt; console.log('Hi!');</code></pre>
+
+                    <h3>Default Parameters</h3>
+                    <pre><code class="language-javascript">function greet(name = 'Guest') {
+    return `Hello, ${name}!`;
+}
+
+greet();        // Hello, Guest!
+greet('Alice'); // Hello, Alice!</code></pre>
+
+                    <h3>Rest Parameters</h3>
+                    <pre><code class="language-javascript">function sum(...numbers) {
+    return numbers.reduce((total, n) =&gt; total + n, 0);
+}
+
+sum(1, 2, 3, 4);  // 10</code></pre>
+
+                    <h3>Callback Functions</h3>
+                    <pre><code class="language-javascript">function processData(data, callback) {
+    const result = data.toUpperCase();
+    callback(result);
+}
+
+processData('hello', function(result) {
+    console.log(result);  // HELLO
+});
+
+// Using arrow function
+processData('hello', result =&gt; console.log(result));</code></pre>
+
+                    <hr>
+
+                    <h2 id="arrays">Arrays</h2>
+
+                    <h3>Creating Arrays</h3>
+                    <pre><code class="language-javascript">const fruits = ['apple', 'banana', 'orange'];
+const numbers = [1, 2, 3, 4, 5];
+const mixed = [1, 'hello', true, null];
+const empty = [];</code></pre>
+
+                    <h3>Accessing Elements</h3>
+                    <pre><code class="language-javascript">const fruits = ['apple', 'banana', 'orange'];
+
+fruits[0]          // 'apple'
+fruits[1]          // 'banana'
+fruits[fruits.length - 1]  // 'orange' (last element)</code></pre>
+
+                    <h3>Array Methods</h3>
+                    <pre><code class="language-javascript">const fruits = ['apple', 'banana'];
+
+// Adding/Removing
+fruits.push('orange');     // Add to end → ['apple', 'banana', 'orange']
+fruits.pop();              // Remove from end → ['apple', 'banana']
+fruits.unshift('grape');   // Add to start → ['grape', 'apple', 'banana']
+fruits.shift();            // Remove from start → ['apple', 'banana']
+
+// Finding
+fruits.indexOf('banana');  // 1 (index of element)
+fruits.includes('apple');  // true
+fruits.find(f =&gt; f.length &gt; 5);  // 'banana' (first match)
+fruits.findIndex(f =&gt; f.length &gt; 5);  // 1
+
+// Transforming
+const numbers = [1, 2, 3, 4, 5];
+
+// map - transform each element
+const doubled = numbers.map(n =&gt; n * 2);  // [2, 4, 6, 8, 10]
+
+// filter - keep elements that pass test
+const evens = numbers.filter(n =&gt; n % 2 === 0);  // [2, 4]
+
+// reduce - accumulate to single value
+const sum = numbers.reduce((acc, n) =&gt; acc + n, 0);  // 15
+
+// forEach - iterate without returning
+numbers.forEach(n =&gt; console.log(n));
+
+// Sorting
+const names = ['Charlie', 'Alice', 'Bob'];
+names.sort();  // ['Alice', 'Bob', 'Charlie']
+
+const nums = [10, 2, 5, 1];
+nums.sort((a, b) =&gt; a - b);  // [1, 2, 5, 10] (ascending)
+
+// Other
+const arr = [1, 2, 3];
+arr.reverse();              // [3, 2, 1]
+arr.join('-');              // '3-2-1'
+arr.slice(0, 2);            // [3, 2] (doesn't modify original)
+arr.splice(1, 1, 'new');    // Remove 1 item at index 1, add 'new'</code></pre>
+
+                    <h3>Spread Operator</h3>
+                    <pre><code class="language-javascript">const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+
+const combined = [...arr1, ...arr2];  // [1, 2, 3, 4, 5, 6]
+const copy = [...arr1];               // [1, 2, 3]</code></pre>
+
+                    <h3>Destructuring</h3>
+                    <pre><code class="language-javascript">const colors = ['red', 'green', 'blue'];
+const [first, second, third] = colors;
+
+console.log(first);   // 'red'
+console.log(second);  // 'green'
+
+// Skip elements
+const [, , blue] = colors;  // 'blue'
+
+// Rest
+const [head, ...tail] = colors;  // head: 'red', tail: ['green', 'blue']</code></pre>
+
+                    <hr>
+
+                    <h2 id="objects">Objects</h2>
+
+                    <h3>Creating Objects</h3>
+                    <pre><code class="language-javascript">const person = {
+    name: 'Alice',
+    age: 25,
+    isStudent: true,
+    hobbies: ['reading', 'gaming'],
+    address: {
+        city: 'Dublin',
+        country: 'Ireland'
+    }
+};</code></pre>
+
+                    <h3>Accessing Properties</h3>
+                    <pre><code class="language-javascript">// Dot notation
+person.name        // 'Alice'
+person.address.city // 'Dublin'
+
+// Bracket notation
+person['name']     // 'Alice'
+person['age']      // 25
+
+// Dynamic property access
+const key = 'name';
+person[key]        // 'Alice'</code></pre>
+
+                    <h3>Modifying Objects</h3>
+                    <pre><code class="language-javascript">// Add/update properties
+person.email = 'alice@example.com';
+person.age = 26;
+
+// Delete properties
+delete person.isStudent;</code></pre>
+
+                    <h3>Object Methods</h3>
+                    <pre><code class="language-javascript">const person = {
+    name: 'Alice',
+    greet() {
+        return `Hello, I'm ${this.name}`;
+    }
+};
+
+person.greet();  // "Hello, I'm Alice"</code></pre>
+
+                    <h3>Object Methods (Built-in)</h3>
+                    <pre><code class="language-javascript">const person = { name: 'Alice', age: 25 };
+
+Object.keys(person);    // ['name', 'age']
+Object.values(person);  // ['Alice', 25]
+Object.entries(person); // [['name', 'Alice'], ['age', 25]]
+Object.assign({}, person, { city: 'Dublin' });  // Merge objects</code></pre>
+
+                    <h3>Destructuring</h3>
+                    <pre><code class="language-javascript">const person = { name: 'Alice', age: 25, city: 'Dublin' };
+
+const { name, age } = person;
+console.log(name);  // 'Alice'
+
+// Rename
+const { name: userName } = person;
+console.log(userName);  // 'Alice'
+
+// Default values
+const { country = 'Unknown' } = person;
+console.log(country);  // 'Unknown'
+
+// Nested
+const { address: { city } } = { address: { city: 'Dublin' } };</code></pre>
+
+                    <h3>Spread Operator</h3>
+                    <pre><code class="language-javascript">const person = { name: 'Alice', age: 25 };
+const employee = { ...person, job: 'Developer' };
+// { name: 'Alice', age: 25, job: 'Developer' }</code></pre>
+
+                    <hr>
+
+                    <h2 id="dom-manipulation">DOM Manipulation</h2>
+                    <p>The DOM (Document Object Model) allows JavaScript to interact with HTML.</p>
+
+                    <h3>Selecting Elements</h3>
+                    <pre><code class="language-javascript">// By ID
+const element = document.getElementById('myId');
+
+// By class name
+const elements = document.getElementsByClassName('myClass');
+
+// By tag name
+const paragraphs = document.getElementsByTagName('p');
+
+// Query selector (returns first match)
+const element = document.querySelector('.myClass');
+const element = document.querySelector('#myId');
+const element = document.querySelector('div.container &gt; p');
+
+// Query selector all (returns all matches)
+const elements = document.querySelectorAll('.myClass');</code></pre>
+
+                    <h3>Modifying Elements</h3>
+                    <pre><code class="language-javascript">const element = document.querySelector('#myElement');
+
+// Text content
+element.textContent = 'New text';
+element.innerText = 'New text';  // Similar but respects CSS
+
+// HTML content
+element.innerHTML = '&lt;strong&gt;Bold text&lt;/strong&gt;';
+
+// Attributes
+element.setAttribute('class', 'newClass');
+element.getAttribute('class');
+element.removeAttribute('class');
+
+// Shorthand for common attributes
+element.id = 'newId';
+element.className = 'class1 class2';
+element.src = 'image.jpg';
+element.href = 'https://example.com';
+
+// Classes
+element.classList.add('newClass');
+element.classList.remove('oldClass');
+element.classList.toggle('active');
+element.classList.contains('active');  // true/false
+
+// Styles
+element.style.color = 'red';
+element.style.backgroundColor = 'blue';
+element.style.fontSize = '20px';</code></pre>
+
+                    <h3>Creating and Adding Elements</h3>
+                    <pre><code class="language-javascript">// Create element
+const newDiv = document.createElement('div');
+newDiv.textContent = 'Hello!';
+newDiv.classList.add('greeting');
+
+// Add to DOM
+document.body.appendChild(newDiv);
+
+// Insert before
+const parent = document.querySelector('.container');
+const reference = document.querySelector('.reference');
+parent.insertBefore(newDiv, reference);
+
+// Modern methods
+parent.append(newDiv);          // Add to end
+parent.prepend(newDiv);         // Add to beginning
+reference.before(newDiv);       // Add before reference
+reference.after(newDiv);        // Add after reference
+
+// Remove element
+element.remove();
+// Or
+parent.removeChild(element);
+
+// Clone element
+const clone = element.cloneNode(true);  // true = deep clone</code></pre>
+
+                    <hr>
+
+                    <h2 id="events">Events</h2>
+
+                    <h3>Adding Event Listeners</h3>
+                    <pre><code class="language-javascript">const button = document.querySelector('#myButton');
+
+// addEventListener (recommended)
+button.addEventListener('click', function(event) {
+    console.log('Button clicked!');
+    console.log(event.target);  // The element that was clicked
+});
+
+// Arrow function
+button.addEventListener('click', (e) =&gt; {
+    console.log('Clicked!');
+});
+
+// Named function
+function handleClick(event) {
+    console.log('Clicked!');
+}
+button.addEventListener('click', handleClick);
+
+// Remove event listener
+button.removeEventListener('click', handleClick);</code></pre>
+
+                    <h3>Common Events</h3>
+                    <pre><code class="language-javascript">// Mouse events
+element.addEventListener('click', handler);
+element.addEventListener('dblclick', handler);
+element.addEventListener('mouseenter', handler);
+element.addEventListener('mouseleave', handler);
+element.addEventListener('mousemove', handler);
+
+// Keyboard events
+document.addEventListener('keydown', handler);
+document.addEventListener('keyup', handler);
+document.addEventListener('keypress', handler);  // deprecated
+
+// Form events
+form.addEventListener('submit', handler);
+input.addEventListener('change', handler);
+input.addEventListener('input', handler);
+input.addEventListener('focus', handler);
+input.addEventListener('blur', handler);
+
+// Window events
+window.addEventListener('load', handler);
+window.addEventListener('resize', handler);
+window.addEventListener('scroll', handler);</code></pre>
+
+                    <h3>Event Object</h3>
+                    <pre><code class="language-javascript">document.addEventListener('click', function(event) {
+    event.target;           // Element that triggered event
+    event.currentTarget;    // Element with the listener
+    event.type;             // Event type ('click')
+    event.preventDefault(); // Prevent default behavior
+    event.stopPropagation(); // Stop event bubbling
+});
+
+// Keyboard event
+document.addEventListener('keydown', function(event) {
+    event.key;      // 'Enter', 'a', 'ArrowUp', etc.
+    event.code;     // 'Enter', 'KeyA', 'ArrowUp', etc.
+    event.ctrlKey;  // true if Ctrl was pressed
+    event.shiftKey; // true if Shift was pressed
+    event.altKey;   // true if Alt was pressed
+});</code></pre>
+
+                    <h3>Event Delegation</h3>
+                    <pre><code class="language-javascript">// Instead of adding listeners to each item
+const list = document.querySelector('#myList');
+
+list.addEventListener('click', function(event) {
+    if (event.target.matches('li')) {
+        console.log('List item clicked:', event.target.textContent);
+    }
+});</code></pre>
+
+                    <hr>
+
+                    <h2 id="asynchronous-javascript">Asynchronous JavaScript</h2>
+
+                    <h3>Promises</h3>
+                    <pre><code class="language-javascript">// Creating a promise
+const myPromise = new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; {
+        const success = true;
+        if (success) {
+            resolve('Data loaded!');
+        } else {
+            reject('Error loading data');
+        }
+    }, 1000);
+});
+
+// Using a promise
+myPromise
+    .then(result =&gt; {
+        console.log(result);  // 'Data loaded!'
+    })
+    .catch(error =&gt; {
+        console.error(error);
+    })
+    .finally(() =&gt; {
+        console.log('Done!');
+    });</code></pre>
+
+                    <h3>Async/Await</h3>
+                    <pre><code class="language-javascript">async function fetchData() {
+    try {
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+fetchData();</code></pre>
+
+                    <h3>Fetch API</h3>
+                    <pre><code class="language-javascript">// GET request
+fetch('https://api.example.com/data')
+    .then(response =&gt; response.json())
+    .then(data =&gt; console.log(data))
+    .catch(error =&gt; console.error(error));
+
+// POST request
+fetch('https://api.example.com/data', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name: 'Alice', age: 25 })
+})
+    .then(response =&gt; response.json())
+    .then(data =&gt; console.log(data));
+
+// With async/await
+async function postData() {
+    const response = await fetch('https://api.example.com/data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name: 'Alice' })
+    });
+    const data = await response.json();
+    return data;
+}</code></pre>
+
+                    <hr>
+
+                    <h2 id="es6-features">ES6+ Features</h2>
+
+                    <h3>Template Literals</h3>
+                    <pre><code class="language-javascript">const name = 'Alice';
+const greeting = `Hello, ${name}!`;
+
+// Multiline strings
+const html = `
+    &lt;div&gt;
+        &lt;p&gt;Hello&lt;/p&gt;
+    &lt;/div&gt;
+`;</code></pre>
+
+                    <h3>Destructuring</h3>
+                    <pre><code class="language-javascript">// Arrays
+const [a, b] = [1, 2];
+
+// Objects
+const { name, age } = { name: 'Alice', age: 25 };</code></pre>
+
+                    <h3>Spread and Rest</h3>
+                    <pre><code class="language-javascript">// Spread
+const arr = [...arr1, ...arr2];
+const obj = { ...obj1, ...obj2 };
+
+// Rest
+function sum(...numbers) {
+    return numbers.reduce((a, b) =&gt; a + b);
+}</code></pre>
+
+                    <h3>Optional Chaining (ES2020)</h3>
+                    <pre><code class="language-javascript">const name = user?.profile?.name;
+const result = object?.method?.();
+const item = array?.[0];</code></pre>
+
+                    <h3>Nullish Coalescing (ES2020)</h3>
+                    <pre><code class="language-javascript">const value = null ?? 'default';  // 'default'
+const value = 0 ?? 'default';     // 0 (unlike ||)</code></pre>
+
+                    <h3>Modules</h3>
+                    <pre><code class="language-javascript">// Export (math.js)
+export const PI = 3.14159;
+export function add(a, b) {
+    return a + b;
+}
+export default function multiply(a, b) {
+    return a * b;
+}
+
+// Import (main.js)
+import multiply, { PI, add } from './math.js';
+import * as math from './math.js';</code></pre>
+
+                    <hr>
+
+                    <h2 id="best-practices">Best Practices</h2>
+
+                    <h3>✅ Do's</h3>
+                    <ol>
+                        <li><strong>Use <code>const</code> by default</strong>, <code>let</code> when needed</li>
+                        <li><strong>Use strict equality</strong> (<code>===</code> and <code>!==</code>)</li>
+                        <li><strong>Use meaningful variable names</strong></li>
+                        <li><strong>Write small, focused functions</strong></li>
+                        <li><strong>Handle errors</strong> with try/catch</li>
+                        <li><strong>Use modern features</strong> (arrow functions, template literals)</li>
+                        <li><strong>Comment complex logic</strong></li>
+                    </ol>
+
+                    <h3>❌ Don'ts</h3>
+                    <ol>
+                        <li><strong>Don't use <code>var</code></strong></li>
+                        <li><strong>Don't pollute global scope</strong></li>
+                        <li><strong>Don't use <code>==</code></strong> (loose equality)</li>
+                        <li><strong>Don't modify DOM in loops</strong> (batch changes)</li>
+                        <li><strong>Don't ignore errors</strong></li>
+                    </ol>
+
+                    <hr>
+
+                    <h2 id="resources">🔗 Resources</h2>
+
+                    <h3>Official Documentation</h3>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" target="_blank" rel="noopener">MDN JavaScript Guide</a> - Comprehensive JS documentation</li>
+                        <li><a href="https://javascript.info/" target="_blank" rel="noopener">JavaScript.info</a> - Modern JavaScript tutorial</li>
+                        <li><a href="https://tc39.es/ecma262/" target="_blank" rel="noopener">ECMAScript Specification</a> - Official language spec</li>
+                    </ul>
+
+                    <h3>Interactive Learning</h3>
+                    <ul>
+                        <li><a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" target="_blank" rel="noopener">freeCodeCamp JavaScript</a> - Free curriculum</li>
+                        <li><a href="https://www.codecademy.com/learn/introduction-to-javascript" target="_blank" rel="noopener">Codecademy JavaScript</a> - Interactive lessons</li>
+                        <li><a href="https://www.theodinproject.com/paths/full-stack-javascript" target="_blank" rel="noopener">The Odin Project - JavaScript</a> - Project-based learning</li>
+                        <li><a href="https://eloquentjavascript.net/" target="_blank" rel="noopener">Eloquent JavaScript</a> - Free online book</li>
+                    </ul>
+
+                    <h3>Practice</h3>
+                    <ul>
+                        <li><a href="https://www.codewars.com/" target="_blank" rel="noopener">Codewars</a> - Coding challenges</li>
+                        <li><a href="https://leetcode.com/" target="_blank" rel="noopener">LeetCode</a> - Algorithm problems</li>
+                        <li><a href="https://exercism.org/tracks/javascript" target="_blank" rel="noopener">Exercism JavaScript Track</a> - Mentored practice</li>
+                    </ul>
+
+                    <h3>Tools</h3>
+                    <ul>
+                        <li><a href="https://babeljs.io/repl" target="_blank" rel="noopener">Babel REPL</a> - Test modern JS syntax</li>
+                        <li><a href="https://eslint.org/" target="_blank" rel="noopener">ESLint</a> - Code linting</li>
+                        <li><a href="https://prettier.io/" target="_blank" rel="noopener">Prettier</a> - Code formatting</li>
+                    </ul>
+
+                    <hr>
+
+                    <h2>📝 Exercises</h2>
+
+                    <h3>Exercise 1: Counter App</h3>
+                    <p>Create a counter with:</p>
+                    <ul>
+                        <li>Display showing current count</li>
+                        <li>Increment button (+)</li>
+                        <li>Decrement button (-)</li>
+                        <li>Reset button</li>
+                    </ul>
+
+                    <h3>Exercise 2: To-Do List</h3>
+                    <p>Create a to-do list with:</p>
+                    <ul>
+                        <li>Input field for new tasks</li>
+                        <li>Add button</li>
+                        <li>Display list of tasks</li>
+                        <li>Delete button for each task</li>
+                    </ul>
+
+                    <h3>Exercise 3: Quiz Game</h3>
+                    <p>Create a simple quiz:</p>
+                    <ul>
+                        <li>Array of questions and answers</li>
+                        <li>Display one question at a time</li>
+                        <li>Multiple choice buttons</li>
+                        <li>Show score at the end</li>
+                    </ul>
+
+                    <hr>
+
+                    <p><em>Previous: <a href="../02-css/index.html">CSS Documentation</a> | Next: <a href="../04-git-github/index.html">Git &amp; GitHub Documentation</a></em></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">💻</span>
+                    <span>SALIS Coding Course</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Sylenia/SALIS-Coding-Course" target="_blank" rel="noopener">
+                        <svg class="github-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SALIS High School Coding Course. Happy Coding! 🎉</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

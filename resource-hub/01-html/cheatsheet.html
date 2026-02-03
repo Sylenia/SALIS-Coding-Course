@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Cheat Sheet | SALIS Coding Course</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">💻</span>
+                <span>SALIS Coding</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Resources</a></li>
+                <li><a href="../../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../../index.html#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="content-page">
+        <section class="content-section">
+            <div class="container content-container">
+                <article class="markdown-content">
+                    <h1>📋 HTML Cheat Sheet</h1>
+                    <p>Quick reference guide for common HTML elements and attributes.</p>
+
+                    <hr>
+
+                    <h2>Document Structure</h2>
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Content here --&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Text Elements</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code></td>
+                                <td>Headings</td>
+                                <td><code>&lt;h1&gt;Title&lt;/h1&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;p&gt;</code></td>
+                                <td>Paragraph</td>
+                                <td><code>&lt;p&gt;Text&lt;/p&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;strong&gt;</code></td>
+                                <td>Bold (important)</td>
+                                <td><code>&lt;strong&gt;Bold&lt;/strong&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;em&gt;</code></td>
+                                <td>Italic (emphasis)</td>
+                                <td><code>&lt;em&gt;Italic&lt;/em&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;mark&gt;</code></td>
+                                <td>Highlighted</td>
+                                <td><code>&lt;mark&gt;Highlight&lt;/mark&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;small&gt;</code></td>
+                                <td>Smaller text</td>
+                                <td><code>&lt;small&gt;Fine print&lt;/small&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;del&gt;</code></td>
+                                <td>Deleted text</td>
+                                <td><code>&lt;del&gt;Removed&lt;/del&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;ins&gt;</code></td>
+                                <td>Inserted text</td>
+                                <td><code>&lt;ins&gt;Added&lt;/ins&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;sub&gt;</code></td>
+                                <td>Subscript</td>
+                                <td><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;sup&gt;</code></td>
+                                <td>Superscript</td>
+                                <td><code>x&lt;sup&gt;2&lt;/sup&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;code&gt;</code></td>
+                                <td>Inline code</td>
+                                <td><code>&lt;code&gt;var x&lt;/code&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;pre&gt;</code></td>
+                                <td>Preformatted</td>
+                                <td><code>&lt;pre&gt;  spaces  &lt;/pre&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;blockquote&gt;</code></td>
+                                <td>Quote block</td>
+                                <td><code>&lt;blockquote&gt;Quote&lt;/blockquote&gt;</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;br&gt;</code></td>
+                                <td>Line break</td>
+                                <td><code>Line 1&lt;br&gt;Line 2</code></td>
+                            </tr>
+                            <tr>
+                                <td><code>&lt;hr&gt;</code></td>
+                                <td>Horizontal rule</td>
+                                <td><code>&lt;hr&gt;</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2>Links</h2>
+                    <pre><code class="language-html">&lt;!-- External link --&gt;
+&lt;a href="https://example.com"&gt;Visit Site&lt;/a&gt;
+
+&lt;!-- Open in new tab --&gt;
+&lt;a href="https://example.com" target="_blank" rel="noopener"&gt;New Tab&lt;/a&gt;
+
+&lt;!-- Internal link --&gt;
+&lt;a href="about.html"&gt;About Page&lt;/a&gt;
+
+&lt;!-- Anchor link --&gt;
+&lt;a href="#section-id"&gt;Jump to Section&lt;/a&gt;
+
+&lt;!-- Email link --&gt;
+&lt;a href="mailto:email@example.com"&gt;Email Us&lt;/a&gt;
+
+&lt;!-- Phone link --&gt;
+&lt;a href="tel:+1234567890"&gt;Call Us&lt;/a&gt;
+
+&lt;!-- Download link --&gt;
+&lt;a href="file.pdf" download&gt;Download PDF&lt;/a&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Images</h2>
+                    <pre><code class="language-html">&lt;!-- Basic image --&gt;
+&lt;img src="image.jpg" alt="Description"&gt;
+
+&lt;!-- With dimensions --&gt;
+&lt;img src="image.jpg" alt="Description" width="300" height="200"&gt;
+
+&lt;!-- With figure --&gt;
+&lt;figure&gt;
+    &lt;img src="photo.jpg" alt="A photo"&gt;
+    &lt;figcaption&gt;Photo caption&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Lists</h2>
+                    <pre><code class="language-html">&lt;!-- Unordered list --&gt;
+&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Ordered list --&gt;
+&lt;ol&gt;
+    &lt;li&gt;First&lt;/li&gt;
+    &lt;li&gt;Second&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Definition list --&gt;
+&lt;dl&gt;
+    &lt;dt&gt;Term&lt;/dt&gt;
+    &lt;dd&gt;Definition&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Tables</h2>
+                    <pre><code class="language-html">&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Header 1&lt;/th&gt;
+            &lt;th&gt;Header 2&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Cell 1&lt;/td&gt;
+            &lt;td&gt;Cell 2&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Forms</h2>
+                    <pre><code class="language-html">&lt;form action="/submit" method="POST"&gt;
+    &lt;!-- Text input --&gt;
+    &lt;input type="text" name="username" placeholder="Username"&gt;
+    
+    &lt;!-- Password --&gt;
+    &lt;input type="password" name="pass"&gt;
+    
+    &lt;!-- Email --&gt;
+    &lt;input type="email" name="email" required&gt;
+    
+    &lt;!-- Number --&gt;
+    &lt;input type="number" name="age" min="1" max="100"&gt;
+    
+    &lt;!-- Checkbox --&gt;
+    &lt;input type="checkbox" name="agree" id="agree"&gt;
+    &lt;label for="agree"&gt;I agree&lt;/label&gt;
+    
+    &lt;!-- Radio buttons --&gt;
+    &lt;input type="radio" name="gender" value="m" id="male"&gt;
+    &lt;label for="male"&gt;Male&lt;/label&gt;
+    &lt;input type="radio" name="gender" value="f" id="female"&gt;
+    &lt;label for="female"&gt;Female&lt;/label&gt;
+    
+    &lt;!-- Select dropdown --&gt;
+    &lt;select name="country"&gt;
+        &lt;option value=""&gt;Select...&lt;/option&gt;
+        &lt;option value="us"&gt;USA&lt;/option&gt;
+        &lt;option value="uk"&gt;UK&lt;/option&gt;
+    &lt;/select&gt;
+    
+    &lt;!-- Textarea --&gt;
+    &lt;textarea name="message" rows="4" cols="50"&gt;&lt;/textarea&gt;
+    
+    &lt;!-- Submit button --&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Input Types</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>text</code></td><td>Single-line text</td></tr>
+                            <tr><td><code>password</code></td><td>Hidden password</td></tr>
+                            <tr><td><code>email</code></td><td>Email validation</td></tr>
+                            <tr><td><code>number</code></td><td>Numeric only</td></tr>
+                            <tr><td><code>tel</code></td><td>Telephone</td></tr>
+                            <tr><td><code>url</code></td><td>URL validation</td></tr>
+                            <tr><td><code>date</code></td><td>Date picker</td></tr>
+                            <tr><td><code>time</code></td><td>Time picker</td></tr>
+                            <tr><td><code>datetime-local</code></td><td>Date &amp; time</td></tr>
+                            <tr><td><code>month</code></td><td>Month picker</td></tr>
+                            <tr><td><code>week</code></td><td>Week picker</td></tr>
+                            <tr><td><code>color</code></td><td>Color picker</td></tr>
+                            <tr><td><code>range</code></td><td>Slider</td></tr>
+                            <tr><td><code>file</code></td><td>File upload</td></tr>
+                            <tr><td><code>hidden</code></td><td>Hidden field</td></tr>
+                            <tr><td><code>checkbox</code></td><td>Checkbox</td></tr>
+                            <tr><td><code>radio</code></td><td>Radio button</td></tr>
+                            <tr><td><code>submit</code></td><td>Submit button</td></tr>
+                            <tr><td><code>reset</code></td><td>Reset form</td></tr>
+                            <tr><td><code>button</code></td><td>Clickable button</td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2>Semantic Elements</h2>
+                    <pre><code class="language-html">&lt;header&gt;     &lt;!-- Page/section header --&gt;
+&lt;nav&gt;        &lt;!-- Navigation --&gt;
+&lt;main&gt;       &lt;!-- Main content --&gt;
+&lt;article&gt;    &lt;!-- Self-contained content --&gt;
+&lt;section&gt;    &lt;!-- Thematic section --&gt;
+&lt;aside&gt;      &lt;!-- Sidebar content --&gt;
+&lt;footer&gt;     &lt;!-- Page/section footer --&gt;
+&lt;figure&gt;     &lt;!-- Media with caption --&gt;
+&lt;figcaption&gt; &lt;!-- Figure caption --&gt;
+&lt;details&gt;    &lt;!-- Expandable content --&gt;
+&lt;summary&gt;    &lt;!-- Details heading --&gt;
+&lt;time&gt;       &lt;!-- Date/time --&gt;
+&lt;address&gt;    &lt;!-- Contact info --&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Container Elements</h2>
+                    <pre><code class="language-html">&lt;!-- Block container --&gt;
+&lt;div class="container"&gt;Content&lt;/div&gt;
+
+&lt;!-- Inline container --&gt;
+&lt;span class="highlight"&gt;Text&lt;/span&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Media</h2>
+                    <pre><code class="language-html">&lt;!-- Video --&gt;
+&lt;video src="video.mp4" controls width="400"&gt;
+    Your browser doesn't support video.
+&lt;/video&gt;
+
+&lt;!-- Audio --&gt;
+&lt;audio src="audio.mp3" controls&gt;
+    Your browser doesn't support audio.
+&lt;/audio&gt;
+
+&lt;!-- Embed iframe --&gt;
+&lt;iframe src="https://example.com" width="600" height="400"&gt;&lt;/iframe&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Meta Tags</h2>
+                    <pre><code class="language-html">&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="description" content="Page description"&gt;
+&lt;meta name="keywords" content="keyword1, keyword2"&gt;
+&lt;meta name="author" content="Author Name"&gt;
+&lt;meta name="robots" content="index, follow"&gt;</code></pre>
+
+                    <hr>
+
+                    <h2>Global Attributes</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>id</code></td><td>Unique identifier</td></tr>
+                            <tr><td><code>class</code></td><td>CSS class name(s)</td></tr>
+                            <tr><td><code>style</code></td><td>Inline CSS styles</td></tr>
+                            <tr><td><code>title</code></td><td>Tooltip text</td></tr>
+                            <tr><td><code>hidden</code></td><td>Hides element</td></tr>
+                            <tr><td><code>tabindex</code></td><td>Tab order</td></tr>
+                            <tr><td><code>data-*</code></td><td>Custom data attributes</td></tr>
+                            <tr><td><code>lang</code></td><td>Language</td></tr>
+                            <tr><td><code>dir</code></td><td>Text direction (ltr/rtl)</td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <h2>Special Characters</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Character</th>
+                                <th>Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>&lt;</td><td><code>&amp;lt;</code></td></tr>
+                            <tr><td>&gt;</td><td><code>&amp;gt;</code></td></tr>
+                            <tr><td>&amp;</td><td><code>&amp;amp;</code></td></tr>
+                            <tr><td>"</td><td><code>&amp;quot;</code></td></tr>
+                            <tr><td>'</td><td><code>&amp;apos;</code></td></tr>
+                            <tr><td>  (space)</td><td><code>&amp;nbsp;</code></td></tr>
+                            <tr><td>©</td><td><code>&amp;copy;</code></td></tr>
+                            <tr><td>®</td><td><code>&amp;reg;</code></td></tr>
+                            <tr><td>™</td><td><code>&amp;trade;</code></td></tr>
+                            <tr><td>€</td><td><code>&amp;euro;</code></td></tr>
+                            <tr><td>£</td><td><code>&amp;pound;</code></td></tr>
+                            <tr><td>→</td><td><code>&amp;rarr;</code></td></tr>
+                            <tr><td>←</td><td><code>&amp;larr;</code></td></tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                    <p><em><a href="../index.html">Back to Main Index</a></em></p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">💻</span>
+                    <span>SALIS Coding Course</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/Sylenia/SALIS-Coding-Course" target="_blank" rel="noopener">
+                        <svg class="github-icon" viewBox="0 0 24 24" width="24" height="24">
+                            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 SALIS High School Coding Course. Happy Coding! 🎉</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
