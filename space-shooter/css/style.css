@@ -5,7 +5,7 @@ body {
 			}
 
 			body {
-				background: url(../images/spacebg.jpg);
+				background: url(../images/spacebg.webp);
 				background-repeat: no-repeat;
 				background-position: center;
 	   				background-size: cover;
@@ -28,7 +28,7 @@ body {
 			}
 
 			#wrap-inner {
-				background: url(../images/wrap-space.jpg);	
+				background: url(../images/wrap-space.webp);	
 				background-repeat: no-repeat;
 				background-position: center;
 	   				background-size: cover;

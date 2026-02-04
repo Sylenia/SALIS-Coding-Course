@@ -189,22 +189,22 @@ $.renderFavicon = function() {
 		favc = document.createElement( 'canvas' ),
 		favctx = favc.getContext( '2d' ),
 		faviconGrid = [
-			[ 1, 1, 1, 1, 1,  ,  , 1, 1, 1, 1, 1, 1, 1, 1,  , 1, 1, 1, 1, 1, 1,  ,  1 ],
-			[ 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  1 ],
-			[ 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  1 ],
-			[ 1,  , 1, 1, 1, 1, 1,  ,  , 1, 1, 1, 1, 1, 1,  ,  , 1, 1, 1, 1, 1,  ,  0 ],
-			[ 1,  , 1, 1, 1, 1, 1,  ,  , 1, 1, 1, 1, 1, 1,  ,  , 1, 1, 1, 1, 1,  ,  0 ],
-			[ 1,  , 1, 1,  ,  ,  ,  ,  , 1, 1,  ,  , 1, 1,  ,  , 1, 1,  ,  ,  ,  ,  1 ],
-			[ 1,  , 1, 1,  ,  ,  ,  ,  , 1, 1,  ,  , 1, 1,  ,  , 1, 1,  ,  ,  ,  ,  1 ],
-			[ 1,  , 1, 1,  ,  ,  ,  ,  , 1, 1,  ,  , 1, 1,  ,  , 1, 1, 1, 1, 1,  ,  1 ],
-			[ 1,  , 1, 1,  ,  ,  ,  ,  , 1, 1,  ,  , 1, 1,  ,  , 1, 1, 1, 1, 1,  ,  1 ],
-			[ 1,  , 1, 1,  ,  ,  ,  ,  , 1, 1,  ,  , 1, 1,  ,  ,  ,  ,  , 1, 1,  ,  1 ],
-			[ 1,  , 1, 1,  ,  ,  ,  ,  , 1, 1,  ,  , 1, 1,  ,  ,  ,  ,  , 1, 1,  ,  1 ],
-			[  ,  , 1, 1, 1, 1, 1,  ,  , 1, 1, 1, 1, 1, 1,  ,  , 1, 1, 1, 1, 1,  ,  1 ],
-			[  ,  , 1, 1, 1, 1, 1,  ,  , 1, 1, 1, 1, 1, 1,  ,  , 1, 1, 1, 1, 1,  ,  1 ],
-			[ 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  1 ],
-			[ 1,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  1 ],
-			[ 1, 1, 1, 1, 1, 1, 1, 1, 1,  ,  , 1, 1, 1, 1,  , 1, 1, 1, 1, 1, 1,  ,  1 ],
+			[  ,  ,  ,  ,  ,  ,  , 1, 1,  ,  ,  ,  ,  ,  ,  ],
+			[  ,  ,  ,  ,  ,  , 1, 1, 1, 1,  ,  ,  ,  ,  ,  ],
+			[  ,  ,  ,  ,  , 1, 1, 1, 1, 1, 1,  ,  ,  ,  ,  ],
+			[  ,  ,  ,  , 1, 1, 1, 1, 1, 1, 1, 1,  ,  ,  ,  ],
+			[  ,  ,  , 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  ,  ,  ],
+			[  ,  , 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  ,  ],
+			[  ,  , 1, 1, 1, 1,  ,  ,  ,  , 1, 1, 1, 1,  ,  ],
+			[  ,  , 1, 1, 1,  , 1, 1, 1, 1,  , 1, 1, 1,  ,  ],
+			[  ,  , 1, 1, 1,  , 1, 1, 1, 1,  , 1, 1, 1,  ,  ],
+			[  ,  , 1, 1, 1, 1,  ,  ,  ,  , 1, 1, 1, 1,  ,  ],
+			[  ,  , 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  ,  ],
+			[  ,  ,  , 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,  ,  ,  ],
+			[  ,  ,  ,  , 1, 1, 1, 1, 1, 1, 1, 1,  ,  ,  ,  ],
+			[  ,  ,  ,  ,  , 1, 1, 1, 1, 1, 1,  ,  ,  ,  ,  ],
+			[  ,  ,  ,  ,  ,  , 1, 1, 1, 1,  ,  ,  ,  ,  ,  ],
+			[  ,  ,  ,  ,  ,  ,  , 1, 1,  ,  ,  ,  ,  ,  ,  ],
 		];
 	favc.width = favc.height = 16;
 	favctx.beginPath();
@@ -976,18 +976,7 @@ $.setState = function( state ) {
 		} );
 		$.buttons.push( statsButton );
 
-		var creditsButton = new $.Button( {
-			x: $.cw / 2 + 1,
-			y: statsButton.ey + 26,
-			lockedWidth: 299,
-			lockedHeight: 49,
-			scale: 3,
-			title: 'DEVELOPER',
-			action: function() {
-				$.setState( 'credits' );
-			}
-		} ) ;
-		$.buttons.push( creditsButton );
+
 	}
 
 	if( state == 'stats' ) {
@@ -1024,36 +1013,7 @@ $.setState = function( state ) {
 		$.buttons.push( menuButton );	
 	}
 
-	if( state == 'credits' ) {
-		$.mouse.down = 0;
 
-		var js13kButton = new $.Button( {
-			x: $.cw / 2 + 1,
-			y: 476,
-			lockedWidth: 299,
-			lockedHeight: 49,
-			scale: 3,
-			title: 'GITHUB',
-			action: function() {				
-				location.href = 'https://github.com/Rajspeaks';
-				$.mouse.down = 0;
-			}
-		} );
-		$.buttons.push( js13kButton );
-
-		var menuButton = new $.Button( {
-			x: $.cw / 2 + 1,
-			y: js13kButton.ey + 25,
-			lockedWidth: 299,
-			lockedHeight: 49,
-			scale: 3,
-			title: 'MAIN MENU',
-			action: function() {
-				$.setState( 'menu' );
-			}
-		} );
-		$.buttons.push( menuButton );	
-	}
 
 	if( state == 'pause' ) {
 		$.mouse.down = 0;
@@ -1149,7 +1109,7 @@ $.setupStates = function() {
 			ctx: $.ctxmg,
 			x: $.cw / 2,
 			y: $.ch / 2 - 100,
-			text: 'CLASH OF SPACE',
+			text: 'STARSHIP ARCADE',
 			hspacing: 2,
 			vspacing: 1,
 			halign: 'center',
@@ -1164,22 +1124,6 @@ $.setupStates = function() {
 		$.ctxmg.fillStyle = gradient;
 		$.ctxmg.fill();
 
-		$.ctxmg.beginPath();
-		var bottomInfo = $.text( {
-			ctx: $.ctxmg,
-			x: $.cw / 2,
-			y: $.ch - 172,
-			text: 'Developer: Rajdeep Das',
-			hspacing: 1,
-			vspacing: 1,
-			halign: 'center',
-			valign: 'bottom',
-			scale: 1,
-			snap: 1,
-			render: 1
-		} );
-		$.ctxmg.fillStyle = '#666';
-		$.ctxmg.fill();
 
 	};
 
@@ -1252,66 +1196,7 @@ $.setupStates = function() {
 			i = $.buttons.length; while( i-- ){ $.buttons[ i ].update( i ) }
 	};
 
-	$.states['credits'] = function() {
-		$.clearScreen();
 
-		$.ctxmg.beginPath();
-		var creditsTitle = $.text( {
-			ctx: $.ctxmg,
-			x: $.cw / 2,
-			y: 100,
-			text: 'CREDITS',
-			hspacing: 3,
-			vspacing: 1,
-			halign: 'center',
-			valign: 'bottom',
-			scale: 10,
-			snap: 1,
-			render: 1
-		} );
-		var gradient = $.ctxmg.createLinearGradient( creditsTitle.sx, creditsTitle.sy, creditsTitle.sx, creditsTitle.ey );
-		gradient.addColorStop( 0, '#fff' );
-		gradient.addColorStop( 1, '#999' );
-		$.ctxmg.fillStyle = gradient;
-		$.ctxmg.fill();
-
-		$.ctxmg.beginPath();
-		var creditKeys = $.text( {
-			ctx: $.ctxmg,
-			x: $.cw / 2 - 10,
-			y: creditsTitle.ey + 49,
-			text: 'DEVELOPED BY\nAUDIO PROCESSING\n IDEAS TAKEN FROM \n HTML5 CANVAS REFERENCE\n GAME MATH REFERENCE',
-			hspacing: 1,
-			vspacing: 17,
-			halign: 'right',
-			valign: 'top',
-			scale: 2,
-			snap: 1,
-			render: 1
-		} );		
-		$.ctxmg.fillStyle = 'hsla(0, 0%, 100%, 0.5)';
-		$.ctxmg.fill();
-
-		$.ctxmg.beginPath();
-		var creditValues = $.text( {
-			ctx: $.ctxmg,
-			x: $.cw / 2 + 10,
-			y: creditsTitle.ey + 49,
-			text: ' RAJDEEP DAS\n AUSTINHALLOCK, CHANDLERPRALL\n ASTEROIDS, STAR SHOOTER \n CODEPEN, W3SCHOOL\n W3SCHOOL, CODEPEN\n JAVASCRIPT ANIMATION',
-			hspacing: 1,
-			vspacing: 17,
-			halign: 'left',
-			valign: 'top',
-			scale: 2,
-			snap: 1,
-			render: 1
-		} );		
-		$.ctxmg.fillStyle = '#fff';
-		$.ctxmg.fill();
-
-		var i = $.buttons.length; while( i-- ){ $.buttons[ i ].render( i ) }
-			i = $.buttons.length; while( i-- ){ $.buttons[ i ].update( i ) }
-	};
 
 	$.states['play'] = function() {
 		$.updateDelta();
